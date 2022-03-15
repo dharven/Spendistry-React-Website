@@ -9,21 +9,24 @@ import {
 } from "reactstrap";
 import axios from 'axios';
 
-
-
-
 const Starter = () => {
 
-  const [data, setData] = useState([{total:"", totalAll:""}]);
+  const [data, setData] = useState([{MonthlyTotalAll:"", AllTotal:""}]);
 
   useEffect(() => {
     const fetchData = async () => {
+      if (localStorage.getItem('email') !== null ) {
+        var email = localStorage.getItem('email')
+      } else {
+        var email = sessionStorage.getItem('email')
+      }
       const result = await axios(
-        'https://cdbd-18-212-22-122.ngrok.io/invoice/totalExpense/shashank@gmail.com',
+        'https://cdbd-18-212-22-122.ngrok.io/invoice/total/' + email,
       );
 
       setData(result.data);
-      console.log(result.data)
+      console.log(result.data)     
+      
     };
 
     fetchData();
@@ -36,7 +39,7 @@ const Starter = () => {
       <Card body className="text-center">
         <CardTitle tag="h5">Monthly Expenses</CardTitle>
         <CardText>
-       <h3>₹{data[0].total}</h3> 
+       <h3>₹{data[0].MonthlyTotalAll}</h3> 
         </CardText>
         {/* <div>
           <Button color="light-danger">{data[0]._id}</Button>
@@ -47,7 +50,7 @@ const Starter = () => {
       <Card body className="text-center">
         <CardTitle tag="h5">Total Expenses</CardTitle>
         <CardText>
-        <h3>₹{data[0].totalAll}</h3>
+        <h3>₹{data[0].AllTotal}</h3>
         </CardText>
         {/* <div>
           <Button color="light-danger">{data[0]._id}</Button>
