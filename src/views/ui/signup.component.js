@@ -1,10 +1,16 @@
 import React, { Component, Fragment } from "react";
 import axios from "axios";
-import { Link } from 'react-router-dom';
+
 import "./login.index.css";
+import { Link , Navigate } from 'react-router-dom';
 
 const SignIn = () => {
+    const [registered, setregistered] = React.useState(false);
+    React.useEffect(() => {
+        //get data from url with axios
 
+        
+    },[])
     const submit = (e) =>{
         e.preventDefault();
         axios.post("https://cdbd-18-212-22-122.ngrok.io/auth",{
@@ -23,19 +29,27 @@ const SignIn = () => {
 
                   })
               .then((respose) => {
+                  
                   axios.post("https://cdbd-18-212-22-122.ngrok.io/invoice",
                   {
                   _id: document.getElementById("email").value
                 })
                 console.log(respose);
+                
               })
               .catch((error) => {
                 console.log(error);
               })
+              
         }).catch((error)=>{
             console.log("error in creation of account")
         })
-        
+        setregistered(true)
+    }
+    if(registered){
+        return(
+            <Navigate to="/"/>
+        )
     }
 
     return (
