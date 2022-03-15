@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment, useState  } from "react";
 import Global from "./global.js";
 import axios from "axios";
 import "./login.index.css";
@@ -7,6 +7,7 @@ import { Link , Navigate } from 'react-router-dom';
 
 const LogIn = () => {
     const [loggedIn, setLoggedIn] = React.useState(false);
+    
     React.useEffect(() => {
         //get data from url with axios
 
@@ -25,7 +26,18 @@ const LogIn = () => {
                 password: password.value
               })
           .then((response) => {
-            console.log(response)
+            console.log(response.data.message)
+            if(response.data.message=="Cannot find user email")
+            {
+                document.getElementById("email-error").innerHTML='Invalid Email'
+            
+            }
+            else if(response.data.message=="Invalid Password")
+            {
+                document.getElementById("password-error").innerHTML='Invalid Password'
+            }
+           
+            else{
             if (document.getElementById("customCheck1").checked){
                 localStorage.setItem (
                     "Jwt", response.data
@@ -35,10 +47,16 @@ const LogIn = () => {
             else {sessionStorage.setItem ("Jwt", response.data)
             sessionStorage.setItem ("email",email.value )
         }
+        setLoggedIn(true);
+    }
 
-            setLoggedIn(true);
+          
 
           })
+          
+        
+      
+         
           .catch((error) => {
             console.log(error);
           })
@@ -67,12 +85,12 @@ const LogIn = () => {
                 <label for="email">Email</label>
                 <input type="email" id="_id" name="email" className="form-control"  placeholder="Enter email" required/>
             </div>
-
+            <p id="email-error" style={{color: "red"}} ></p>
             <div className="form-group">
                 <label for="password" >Password</label>
                 <input type="password" id="password" name="password" className="form-control" placeholder="Enter password" required/>
             </div>
-
+                <p id="password-error" style={{color: "red"}}></p>
             <div className="form-group">
                 <div className="custom-control custom-checkbox">
                     <input type="checkbox" className="custom-control-input" id="customCheck1" />
@@ -80,7 +98,7 @@ const LogIn = () => {
                 </div>
             </div>
 
-            <button type="submit" className="btn btn-dark btn-lg btn-block" id="Sign-btn">Sign in</button>
+            <button type="submit" className="btn btn-dark btn-lg btn-block" id="Sign-btn">Log in</button>
             <p className="forgot-password text-right">
                 <a href="#"> Forgot password?</a>
             </p>
