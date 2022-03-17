@@ -4,12 +4,17 @@ import axios from 'axios';
 import "./PJ.css";
 
 const ProjectTables = () => {
-  const [data, setData] = useState([{total:"", totalAll:""}]);
+  const [data, setData] = useState([{MonthlyTotal:"", AllTimeTotal:""}]);
 
   useEffect(() => {
     const fetchData = async () => {
+      if (localStorage.getItem('email') !== null ) {
+        var email = localStorage.getItem('email')
+      } else {
+        var email = sessionStorage.getItem('email')
+      }
       const result = await axios(
-        'https://cdbd-18-212-22-122.ngrok.io/invoice/totalExpense/shashank@gmail.com',
+        'https://cdbd-18-212-22-122.ngrok.io/invoice/total/'+ email,
       );
 
       setData(result.data);
@@ -55,8 +60,8 @@ const ProjectTables = () => {
                     </div>
                   </td>
                   
-                  <td>₹{tdata.total}</td>
-                  <td>₹{tdata.totalAll}</td>
+                  <td>₹{tdata.MonthlyTotal}</td>
+                  <td>₹{tdata.AllTimeTotal}</td>
                 </tr>
               
               ))}
