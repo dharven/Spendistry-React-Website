@@ -27,15 +27,15 @@ const LogIn = () => {
               })
           .then((response) => {
             console.log(response.data.message)
-            if(response.data.message=="Cannot find user email")
+            if(response.data.message=="Cannot find user email" || response.data.message=="Invalid Password")
             {
-                document.getElementById("email-error").innerHTML='Invalid Email'
+                document.getElementById("password-error").innerHTML='Invalid Email or password'
             
             }
-            else if(response.data.message=="Invalid Password")
-            {
-                document.getElementById("password-error").innerHTML='Invalid Password'
-            }
+            // else if(response.data.message=="Invalid Password")
+            // {
+            //     document.getElementById("password-error").innerHTML='Invalid Email or Password'
+            // }
            
             else{
             if (document.getElementById("customCheck1").checked){

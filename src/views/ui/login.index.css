@@ -7,6 +7,7 @@
     display: flex;
     font-weight: 400;
     font-family: sans-serif;
+    background-color: #F7F7F7;
   }
   
   body, html, .App, #root, .outer {
@@ -83,6 +84,6 @@
     margin-top:15px;
   }
   #Account-Sign-up{
-    color: green;
+    color: #167bff;
     text-decoration: underline;
   }
