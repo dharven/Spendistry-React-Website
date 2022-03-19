@@ -29,3 +29,6 @@
   #table-scroll::-webkit-scrollbar-thumb:hover {
     background: #2962FF; 
   }
+  ::-webkit-scrollbar {
+    display: none;
+  }

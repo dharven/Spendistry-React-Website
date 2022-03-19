@@ -31,7 +31,8 @@ const ProjectTables = () => {
           <CardTitle tag="h5">Recent Bills</CardTitle>
           
           <div id='table-scroll'>
-          <Table className="no-wrap mt-3 align-middle" responsive borderless>
+            
+          <Table className="no-wrap mt-3 align-middle"  responsive borderless>
             <thead>
               <tr>
                 <th>Business Name</th>
@@ -68,6 +69,7 @@ const ProjectTables = () => {
             </tbody>
           </Table>
           </div>
+          
         </CardBody>
       </Card>
     </div>

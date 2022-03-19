@@ -10,6 +10,7 @@ import {
 import axios from 'axios';
 import "./dashboard.css"
 
+
 const Starter = () => {
 
   const [data, setData] = useState([{MonthlyTotalAll:"", AllTotal:""}]);
@@ -33,8 +34,11 @@ const Starter = () => {
     fetchData();
   }, []);
 
+  
   return (
+    
     <div>
+     
     <Row>
     <Col md="6" lg="4">
       <Card body className="text-center">

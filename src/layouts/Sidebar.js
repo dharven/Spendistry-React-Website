@@ -1,6 +1,6 @@
 import { Button, Nav, NavItem } from "reactstrap";
 import { Link, useLocation } from "react-router-dom";
-
+import "./sidebar.css"
 const navigation = [
   {
     title: "Dashboard",
@@ -36,6 +36,18 @@ const navigation = [
 ];
 
 const Sidebar = () => {
+  const Logout = () => {
+    
+    window.location.href = "/";
+
+if (localStorage.getItem('email') !== null || localStorage.getItem('jwt') !== null ) {
+        localStorage.removeItem('email')
+          localStorage.removeItem('jwt')
+      } else {
+        sessionStorage.removeItem('email');
+       sessionStorage.removeItem('jwt');
+      }
+  }
   const showMobilemenu = () => {
     document.getElementById("sidebarArea").classList.toggle("showSidebar");
   };
@@ -71,6 +83,7 @@ const Sidebar = () => {
           ))}
          
         </Nav>
+        <p id="logout-btn" style={{color: 'red', paddingLeft: '6.5%', paddingTop: '3%', cursor: "pointer"}} onClick={Logout}><i className="bi bi-door-closed"></i><span className="ms-3 d-inline-block">Logout</span></p>
       </div>
     </div>
   );
