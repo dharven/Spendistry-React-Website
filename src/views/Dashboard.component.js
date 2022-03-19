@@ -8,6 +8,7 @@ import {
   Button,
 } from "reactstrap";
 import axios from 'axios';
+import "./dashboard.css"
 
 const Starter = () => {
 

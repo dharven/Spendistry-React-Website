@@ -16,7 +16,7 @@ const Header = () => {
         <div className="d-lg-block d-none me-5 pe-3">
           <p style={{fontSize: '21px', textAlign: "center", paddingTop: '10px', paddingLeft: '10%'}}> <span style={{color: "orange"}}>Spe</span><span style={{color: "grey"}}>nd</span><span style={{color: "green"}}>istry</span></p>
         </div>
-       
+       <button>Logout</button>
       </div>
       
     

@@ -28,11 +28,11 @@ const navigation = [
     href: "/Edit",
     icon: "bi bi-people",
   },
-  {
-    title: "Logout",
-    href: "/Logout",
-    icon: "bi bi-bell",
-  },
+  // {
+  //   title: "Logout",
+  //   href: "/Logout",
+  //   icon: "bi bi-bell",
+  // },
 ];
 
 const Sidebar = () => {
