@@ -35,6 +35,9 @@ const navigation = [
   // },
 ];
 
+
+
+
 const Sidebar = () => {
   const Logout = () => {
     
@@ -55,15 +58,18 @@ if (localStorage.getItem('email') !== null || localStorage.getItem('jwt') !== nu
 
   return (
     <div className="bg-dark">
+      
       <div className="d-flex">
         <Button
-          color="white"
+          color="red"
           className="ms-auto text-white d-lg-none"
           onClick={() => showMobilemenu()}
         >
+          
           <i className="bi bi-x"></i>
         </Button>
       </div>
+      
       <div className="p-3 mt-2">
         <Nav vertical className="sidebarNav">
           {navigation.map((navi, index) => (
@@ -85,7 +91,8 @@ if (localStorage.getItem('email') !== null || localStorage.getItem('jwt') !== nu
         </Nav>
         <p id="logout-btn" style={{color: 'red', paddingLeft: '6.5%', paddingTop: '3%', cursor: "pointer"}} onClick={Logout}><i className="bi bi-door-closed"></i><span className="ms-3 d-inline-block">Logout</span></p>
       </div>
-    </div>
+      </div>
+  
   );
 };
 

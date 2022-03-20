@@ -100,7 +100,7 @@ const LogIn = () => {
 
             <button type="submit" className="btn btn-dark btn-lg btn-block" id="Sign-btn">Log in</button>
             <p className="forgot-password text-right">
-                <a href="#"> Forgot password?</a>
+                <a><Link to={"/Forgot"}> Forgot password?</Link></a>
             </p>
             <p id="Account-Sign">
                 Don't have an account? <Link to={"/sign-up"}><span id="Account-Sign-up">Sign Up</span> </Link>

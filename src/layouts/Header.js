@@ -5,11 +5,6 @@ import { Navbar } from "reactstrap";
 
 const Header = () => {
   
-  
-  
-  
-
-  
   return (
     <Navbar color="white" light expand="md" className="fix-header">
       <div className="d-flex align-items-center">
