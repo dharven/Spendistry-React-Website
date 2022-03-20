@@ -14,6 +14,7 @@ const ProjectTables = () => {
         var email = sessionStorage.getItem('email')
       }
       const result = await axios(
+        
         'https://cdbd-18-212-22-122.ngrok.io/invoice/total/'+ email,
       );
 

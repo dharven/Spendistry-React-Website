@@ -44,11 +44,11 @@ const Sidebar = () => {
     window.location.href = "/";
 
 if (localStorage.getItem('email') !== null || localStorage.getItem('jwt') !== null ) {
-        localStorage.removeItem('email')
-          localStorage.removeItem('jwt')
+        localStorage.clear();
+         
       } else {
-        sessionStorage.removeItem('email');
-       sessionStorage.removeItem('jwt');
+        sessionStorage.clear();
+      
       }
   }
   const showMobilemenu = () => {
