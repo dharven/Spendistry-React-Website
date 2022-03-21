@@ -1,6 +1,8 @@
+import { useState} from 'react'
 import { Button, Nav, NavItem } from "reactstrap";
 import { Link, useLocation } from "react-router-dom";
 import "./sidebar.css"
+
 const navigation = [
   {
     title: "Dashboard",
@@ -36,8 +38,6 @@ const navigation = [
 ];
 
 
-
-
 const Sidebar = () => {
   const Logout = () => {
     
@@ -51,46 +51,45 @@ if (localStorage.getItem('email') !== null || localStorage.getItem('jwt') !== nu
       
       }
   }
-  const showMobilemenu = () => {
-    document.getElementById("sidebarArea").classList.toggle("showSidebar");
-  };
+  
   let location = useLocation();
 
+  const [show, setShow] = useState(true)
+  const showMobilemenu = () => {
+    setShow(!show);
+  };
   return (
     <div className="bg-dark">
-      
-      <div className="d-flex">
+      <div className="menuButton">
         <Button
           color="red"
-          className="ms-auto text-white d-lg-none"
+          className="ms-auto text-white"
           onClick={() => showMobilemenu()}
-        >
-          
-          <i className="bi bi-x"></i>
+        >       
+          <i className="bi bi-justify"></i>
         </Button>
       </div>
-      
+
+      {show === true ? 
       <div className="p-3 mt-2">
-        <Nav vertical className="sidebarNav">
-          {navigation.map((navi, index) => (
-            <NavItem key={index} className="sidenav-bg">
-              <Link
-                to={navi.href}
-                className={
-                  location.pathname === navi.href
+        <><Nav vertical className="sidebarNav">
+            {navigation.map((navi, index) => (
+              <NavItem key={index} className="sidenav-bg">
+                <Link
+                  to={navi.href}
+                  className={location.pathname === navi.href
                     ? "active nav-link py-3"
-                    : "nav-link py-3"
-                }
-              >
-                <i className={navi.icon}></i>
-                <span className="ms-3 d-inline-block">{navi.title}</span>
-              </Link>
-            </NavItem>
-          ))}
-         
-        </Nav>
-        <p id="logout-btn" style={{color: 'red', paddingLeft: '6.5%', paddingTop: '3%', cursor: "pointer"}} onClick={Logout}><i className="bi bi-door-closed"></i><span className="ms-3 d-inline-block">Logout</span></p>
-      </div>
+                    : "nav-link py-3"}
+                >
+                  <i className={navi.icon}></i>
+                  <span className="ms-3 d-inline-block">{navi.title}</span>
+                </Link>
+              </NavItem>
+            ))}
+
+          </Nav><p id="logout-btn" className="logoutbtn" style={{ color: 'red', paddingTop: '3%', cursor: "pointer" }} onClick={Logout}><i className="bi bi-door-closed"></i><span className="ms-3 d-inline-block">Logout</span></p></>    
+        </div>
+        : "" }
       </div>
   
   );
