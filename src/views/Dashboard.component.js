@@ -9,8 +9,7 @@ import {
 } from "reactstrap";
 import axios from 'axios';
 import "./dashboard.css"
-
-
+import QRCode from "react-qr-code";
 
 
 const Starter = () => {
@@ -37,10 +36,11 @@ const Starter = () => {
   }, []);
 
   
-  return (
+    return (
     
     <div>
-     
+      
+           
     <Row>
     <Col md="6" lg="4">
       <Card body className="text-center">
@@ -68,11 +68,11 @@ const Starter = () => {
     <Col md="6" lg="4">
       <Card body className="text-center">
         <CardTitle tag="h5">Your QR Code</CardTitle>
+       
         <CardText>
-        <img
-         src="https://www.hellotech.com/guide/wp-content/uploads/2020/05/HelloTech-qr-code-300x300.jpg"
-        width="100" height="100"
-        ></img>
+          
+        <QRCode value="hey" size={100} />
+       
         </CardText>
         <div>
           <Button color="white"><i class="bi bi-share" ></i></Button>
