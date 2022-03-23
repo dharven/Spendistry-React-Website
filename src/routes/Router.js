@@ -15,7 +15,7 @@ const Login = lazy(() => import("../views/ui/login.component.js"));
 const Signup = lazy(() => import("../views/ui/signup.component.js"));
 const Forgot = lazy(() => import("../views/ui/Forgot.component.js"));
 const Otp = lazy(() => import("../views/ui/Otp.component.js"));
-const ChangePass = lazy(() => import("../views/ui/ChangePass.component.js"));
+const ChangePass = lazy(() => import("../views/ui/ChangePass.js"));
 
 
 /*****Routes******/

@@ -66,7 +66,7 @@ if (localStorage.getItem('email') !== null || localStorage.getItem('jwt') !== nu
           className="ms-auto text-white"
           onClick={() => showMobilemenu()}
         >       
-          <i className="bi bi-justify"></i>
+          <i className="bi bi-menu-down"></i>
         </Button>
       </div>
 
