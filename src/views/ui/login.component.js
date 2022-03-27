@@ -46,7 +46,7 @@ const LogIn = () => {
             }
             else {sessionStorage.setItem ("Jwt", response.data)
             sessionStorage.setItem ("email",email.value )
-            localStorage.setItem ("email", email.value )
+            
         }
         setLoggedIn(true);
     }
