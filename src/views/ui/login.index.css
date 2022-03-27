@@ -87,3 +87,40 @@
     color: #167bff;
     text-decoration: underline;
   }
+  #edit-submit-btn{
+    background-color: #167bff;
+    width: 40%;
+    color: #ffffff;
+    border-radius: 0.2em;
+    border: #167bff;
+  }
+  #edit-profile-pic{
+    display: grid;
+  justify-content: center;
+  
+
+  }
+  #pro-pic{
+    border-radius: 50%;
+    
+  }
+  #file-pic::-webkit-file-upload-button{
+    color: white;
+  display: inline-block;
+  background: #1CB6E0;
+  border: none;
+  padding: 7px 15px;
+  font-weight: 700;
+  border-radius: 3px;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 10pt;
+  }
+  #edit-profile-input-field{
+    padding-left: 20%;
+    padding-top: 4%;
+  }
+  #edit-profile-submit-field{
+    padding-left: 37%;
+    padding-top: 3%;
+  }

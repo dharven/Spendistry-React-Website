@@ -106,8 +106,7 @@ const EditProfile = (props) => {
         <div className="outer">
         <div className="inner">
             {/* image */}
-        <img src={img} alt="Image" className="image" width="50" height="50"/>
-        <input type="file" name="userProfile" onChange={changeHandler} accept="image/*" />
+       
 			{/* {isSelected ? (
 				<div>
 					<p>Filename: {selectedFile.name}</p>
@@ -121,9 +120,7 @@ const EditProfile = (props) => {
 			) : (
 				<p>Select a file to show details</p>
 			)} */}
-			<div> 
-				<button onClick={() => { handleSubmission();}}>Submit</button>
-			</div>
+			
 {/* Form */}
         {/* <div className="form-group">
          <label>Password</label>
@@ -131,6 +128,20 @@ const EditProfile = (props) => {
             </div> */}
         <form onSubmit={handleSubmit} >
             <h3>Edit Profile</h3>
+            <div className="form-group">
+                <div id="edit-profile-pic">
+            <img src={img} alt="Image" className="image" id="pro-pic" width="50" height="50"/>
+            </div>
+            <div id="edit-profile-input-field">
+        <input type="file" name="userProfile" onChange={changeHandler} accept="image/*" id="file-pic"/>
+        </div>
+
+        <div id="edit-profile-submit-field"> 
+        
+				<button onClick={() => { handleSubmission();}} id="edit-submit-btn">Submit</button>
+			</div>
+            </div>
+           
             <div className="form-group">
                 <label>First name</label>
                 <input value={fname} type="text" id="fname" className="form-control"
@@ -166,7 +177,7 @@ const EditProfile = (props) => {
             </div>
 
 
-            <button type="submit" id="Sign-btn" className="btn btn-dark btn-lg btn-block">Edit Profile</button>
+            <button type="submit" id="Sign-btn" className="btn btn-dark btn-lg btn-block">Save</button>
             {/* <p className="forgot-password text-right">
                 Already registered? <Link to={"/sign-in"}> <span id="Account-Sign-up"> log in! </span></Link>
             </p> */}
