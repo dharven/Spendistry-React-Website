@@ -16,7 +16,7 @@ const Signup = lazy(() => import("../views/ui/signup.component.js"));
 const Forgot = lazy(() => import("../views/ui/Forgot.component.js"));
 const Otp = lazy(() => import("../views/ui/Otp.component.js"));
 const ChangePass = lazy(() => import("../views/ui/ChangePass.js"));
-
+const EditProfile = lazy(() => import("../views/ui/EditProfile.js"));
 
 /*****Routes******/
 
@@ -63,6 +63,7 @@ const ThemeRoutes = [
     children: [
       // { path: "/", element: <Navigate to="/Dashboard" /> },
       { path: "/dashboard", exact: true, element: <Dashboard /> },
+      { path: "/Edit", exact: true, element: <EditProfile /> },
     ],
   },
 ];

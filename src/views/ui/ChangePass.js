@@ -42,8 +42,8 @@ return (
                 onChange={(e)=>setPassword(e.target.value)}
                 required/>
             </div>
-            <p id=" " style={{color: "red"}} >{props.email} </p>
-            <button type="submit" id="Sign-btn" className="btn btn-dark btn-lg btn-block" >Submit</button>
+            <p id=" " style={{color: "red"}} >{props.email} - Email</p>
+            <button type="submit" className="btn btn-dark btn-lg btn-block" id=" ">Submit</button>
             <p className="forgot-password text-center">
                 <a><Link to={"/"}> <h2>{message} </h2>GO TO LOGIN PAGE {password} </Link></a>
                 

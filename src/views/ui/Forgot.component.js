@@ -93,7 +93,7 @@ class Forgot extends Component {
             <p style={{color: "red"}} >
               {err}
             </p>
-            <button type="submit" id="Sign-btn" className="btn btn-dark btn-lg btn-block">Send OTP</button>
+            <button type="submit" className="btn btn-dark btn-lg btn-block">Send OTP</button>
             <p className="forgot-password text-right">
                 <a><Link to={"/"}>Back to Log in!</Link></a>
             </p>
@@ -109,7 +109,7 @@ class Forgot extends Component {
                    onChange={this.onotpChange} placeholder="Enter otp" 
                    required/>
                </div>
-               <button type="submit" id="Sign-btn" className="btn btn-dark btn-lg btn-block">Submit OTP</button>
+               <button type="submit" className="btn btn-dark btn-lg btn-block">Submit OTP</button>
                { 
                this.state.redirect === true ?  
                <>
