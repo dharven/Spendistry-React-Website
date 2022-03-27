@@ -149,7 +149,11 @@ const EditProfile = (props) => {
 				<button onClick={() => { handleSubmission();}} id="edit-submit-btn">Submit</button>
 			</div>
             </div>
-           
+            <div className="form-group">
+                <label>Email</label>
+                <input disabled value={emails} type="email" id="email" className="form-control"
+                placeholder="Enter email" />
+            </div>
             <div className="form-group">
                 <label>First name</label>
                 <input value={fname} type="text" id="fname" className="form-control"
@@ -164,11 +168,7 @@ const EditProfile = (props) => {
                 placeholder="Last name" />
             </div>
 
-            <div className="form-group">
-                <label>Email</label>
-                <input disabled value={emails} type="email" id="email" className="form-control"
-                placeholder="Enter email" />
-            </div>
+           
 
             <div className="form-group">
                 <label>Mobile Number</label>
