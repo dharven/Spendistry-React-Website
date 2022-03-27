@@ -14,7 +14,11 @@ const EditProfile = (props) => {
     const [show, setShow] = useState("")
     
     useEffect(() => {
-       let email = localStorage.getItem('email')
+        if (localStorage.getItem('email') !== null ) {
+            var email = localStorage.getItem('email')
+          } else {
+            var email = sessionStorage.getItem('email')
+          }
         const handlegetdata = async () => {
             const { data} = await axios.get("https://cdbd-18-212-22-122.ngrok.io/user/"+email)
             setfname(data.fname)
