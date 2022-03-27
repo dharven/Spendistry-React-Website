@@ -52,7 +52,11 @@ const EditProfile = (props) => {
           // for image get 
           const [img, setImg] = useState();
                     useEffect(() => {
-                        let email = localStorage.getItem('email')
+                        if (localStorage.getItem('email') !== null ) {
+                            var email = localStorage.getItem('email')
+                          } else {
+                            var email = sessionStorage.getItem('email')
+                          }
                         const fetchImage = async () => {
                             const res = await fetch(`https://cdbd-18-212-22-122.ngrok.io/userProfile/${email}.jpeg`);
                             const imageBlob = await res.blob();

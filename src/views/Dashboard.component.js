@@ -9,13 +9,14 @@ import {
 } from "reactstrap";
 import axios from 'axios';
 import "./dashboard.css"
-
+import QRcode from "react-qr-code"
+import QRCode from "react-qr-code";
 
 
 
 const Starter = () => {
 
-  const [data, setData] = useState([{MonthlyTotalAll:"", AllTotal:""}]);
+  const [data, setData] = useState([{MonthlyTotalAll:"", AllTimeTotal:"", qr:""}]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -57,7 +58,7 @@ const Starter = () => {
       <Card body className="text-center">
         <CardTitle tag="h5">Total Expenses</CardTitle>
         <CardText>
-        <h3>₹{data[0].AllTotal}</h3>
+        <h3>₹{data[0].AllTimeTotal}</h3>
         </CardText>
         {/* <div>
           <Button color="light-danger">{data[0]._id}</Button>
@@ -69,10 +70,7 @@ const Starter = () => {
       <Card body className="text-center">
         <CardTitle tag="h5">Your QR Code</CardTitle>
         <CardText>
-        <img
-         src="https://www.hellotech.com/guide/wp-content/uploads/2020/05/HelloTech-qr-code-300x300.jpg"
-        width="100" height="100"
-        ></img>
+        <QRCode value={data[0].qr} size={100}/>
         </CardText>
         <div>
           <Button color="white"><i class="bi bi-share" ></i></Button>

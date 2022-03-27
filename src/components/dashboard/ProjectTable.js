@@ -4,7 +4,7 @@ import axios from 'axios';
 import "./PJ.css";
 
 const ProjectTables = () => {
-  const [data, setData] = useState([{MonthlyTotal:"", AllTimeTotal:""}]);
+  const [data, setData] = useState([{MonthlyTotal:"", AllTotal:""}]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -63,7 +63,7 @@ const ProjectTables = () => {
                   </td>
                   
                   <td>₹{tdata.MonthlyTotal}</td>
-                  <td>₹{tdata.AllTimeTotal}</td>
+                  <td>₹{tdata.AllTotal}</td>
                 </tr>
               
               ))}
