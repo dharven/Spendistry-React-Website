@@ -9,7 +9,6 @@ import {
 } from "reactstrap";
 import axios from 'axios';
 import "./dashboard.css"
-import QRcode from "react-qr-code"
 import QRCode from "react-qr-code";
 
 
