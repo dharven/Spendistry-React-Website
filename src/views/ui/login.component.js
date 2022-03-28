@@ -12,9 +12,11 @@ const LogIn = () => {
         if (localStorage.getItem('Jwt') !== null) {
             setLogin(true);
         }
-        if(localStorage.getItem('check') == true){
+        if(localStorage.getItem('check') == "true"){
             document.getElementById("customCheck1").checked = true;
-        } 
+        } else {
+            document.getElementById("customCheck1").checked = false;
+        }
         
     },[])
 
