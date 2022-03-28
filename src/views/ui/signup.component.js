@@ -35,16 +35,15 @@ const SignIn = () => {
                   _id: document.getElementById("email").value
                 })
                 console.log(respose);
-                
+                setregistered(true)
               })
               .catch((error) => {
                 console.log(error);
               })
               
         }).catch((error)=>{
-            console.log("error in creation of account")
+            alert("Email already exists")
         })
-        setregistered(true)
     }
     if(registered){
         return(
