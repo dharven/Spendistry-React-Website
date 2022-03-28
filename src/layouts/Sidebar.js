@@ -43,9 +43,10 @@ const Sidebar = () => {
     
     window.location.href = "/";
 
-if (localStorage.getItem('email') !== null || localStorage.getItem('jwt') !== null ) {
-        localStorage.clear();
-         
+if (localStorage.getItem('email') !== null || localStorage.getItem('Jwt') !== null ) {
+        localStorage.removeItem("Jwt");
+        localStorage.removeItem("email");
+        // localStorage.setItem("email", null);
       } else {
         sessionStorage.clear();
       
