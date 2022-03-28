@@ -7,12 +7,16 @@ import { Link , Navigate } from 'react-router-dom';
 
 const LogIn = () => {
     const [loggedIn, setLoggedIn] = React.useState(false);
+    const [login, setLogin] = React.useState(false);
     
     React.useEffect(() => {
         //get data from url with axios
-
+        if (localStorage.getItem('Jwt') !== null) {
+            setLogin(true);
+        }
         
     },[])
+
     
 
     const submit = (e) => {
@@ -68,6 +72,13 @@ const LogIn = () => {
             <Navigate to="/dashboard"/>
         )
     }
+
+    if(login){
+        return(
+        <Navigate to="/dashboard"/>
+        )
+    }
+    
 
 
 
