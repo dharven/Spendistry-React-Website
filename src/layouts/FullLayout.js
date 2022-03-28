@@ -79,8 +79,6 @@ const FullLayout = () => {
             
           )
         } else {
-          // window.location = "/"
-          // <></>
           return (
             <div>
               <h1>loading</h1>

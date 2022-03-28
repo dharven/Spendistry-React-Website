@@ -1,5 +1,4 @@
 import React, { Component, Fragment, useState  } from "react";
-import Global from "./global.js";
 import axios from "axios";
 import "./login.index.css";
 import { Link , Navigate } from 'react-router-dom';
@@ -10,7 +9,6 @@ const LogIn = () => {
     const [login, setLogin] = React.useState(false);
     
     React.useEffect(() => {
-        //get data from url with axios
         if (localStorage.getItem('Jwt') !== null) {
             setLogin(true);
         }
@@ -22,7 +20,6 @@ const LogIn = () => {
     const submit = (e) => {
         e.preventDefault();
          const {email, password} = e.target.elements;
-    // console.log(email.value)
         axios.post(
             "https://cdbd-18-212-22-122.ngrok.io/auth/userLogin",
 {
@@ -36,10 +33,7 @@ const LogIn = () => {
                 document.getElementById("password-error").innerHTML='Invalid Email or password'
             
             }
-            // else if(response.data.message=="Invalid Password")
-            // {
-            //     document.getElementById("password-error").innerHTML='Invalid Email or Password'
-            // }
+
            
             else{
             if (document.getElementById("customCheck1").checked){
