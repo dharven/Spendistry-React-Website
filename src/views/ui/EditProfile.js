@@ -4,7 +4,7 @@ import axios from "axios";
 import "./login.index.css";
 import { Link , Navigate } from 'react-router-dom';
 
-const EditProfile = (props) => {
+function EditProfile(props) {
 
     const [ fname, setfname] = useState("")
     const [ lname, setlname] = useState("")
@@ -30,6 +30,8 @@ const EditProfile = (props) => {
           }
           handlegetdata()
         },[])
+
+        
 
         const handleSubmit = async () => {
             let patchdata = ({

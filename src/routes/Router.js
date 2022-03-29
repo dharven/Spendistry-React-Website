@@ -5,6 +5,8 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+
+
 /****Layouts*****/
 const FullLayout = lazy(() => import("../layouts/FullLayout.js"));
 
@@ -28,7 +30,6 @@ const ThemeRoutes = [
       { path: "/sign-in", element: <Navigate to="/Login" /> },
     ],
   },
-
   {
     path: "",
     element: <Signup />,

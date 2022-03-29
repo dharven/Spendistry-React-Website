@@ -19,6 +19,7 @@ const Starter = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      sessionStorage.removeItem('id');
       if (localStorage.getItem('email') !== null ) {
         var email = localStorage.getItem('email')
       } else {

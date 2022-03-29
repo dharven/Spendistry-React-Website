@@ -5,7 +5,7 @@ import { Container } from "reactstrap";
 import React, {useState,useEffect} from 'react'
 import axios from 'axios';
 
-
+// export const AuthContext = React.createContext();
 const FullLayout = () => {
 
 
