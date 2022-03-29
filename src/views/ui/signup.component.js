@@ -6,8 +6,13 @@ import { Link , Navigate } from 'react-router-dom';
 
 const SignIn = () => {
     const [registered, setregistered] = React.useState(false);
+    const [login, setLogin] = React.useState(false);
+
     React.useEffect(() => {
         //get data from url with axios
+        if (localStorage.getItem('Jwt') !== null) {
+            setLogin(true);
+        }
 
         
     },[])
@@ -48,6 +53,12 @@ const SignIn = () => {
     if(registered){
         return(
             <Navigate to="/"/>
+        )
+    }
+
+    if(login){
+        return(
+        <Navigate to="/dashboard"/>
         )
     }
 
