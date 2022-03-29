@@ -10,7 +10,7 @@ const SignIn = () => {
 
     React.useEffect(() => {
         //get data from url with axios
-        if (localStorage.getItem('Jwt') !== null) {
+        if (localStorage.getItem('Jwt') !== null || sessionStorage.getItem('Jwt') !== null) {
             setLogin(true);
         }
 

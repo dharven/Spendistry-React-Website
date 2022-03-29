@@ -9,7 +9,7 @@ const LogIn = () => {
     const [login, setLogin] = React.useState(false);
     
     React.useEffect(() => {
-        if (localStorage.getItem('Jwt') !== null) {
+        if (localStorage.getItem('Jwt') !== null || sessionStorage.getItem('Jwt') !== null) {
             setLogin(true);
         }
         if(localStorage.getItem('check') == "true"){
