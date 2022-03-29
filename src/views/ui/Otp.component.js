@@ -8,7 +8,7 @@ import { Link , Navigate } from 'react-router-dom';
 const Otp = () => {
     const [message, setMessage] = useState('')
 
-    const [formValue, setformValue] = React.useState({
+    const [formValue, setformValue] = useState({
         otp: ''
       });
     

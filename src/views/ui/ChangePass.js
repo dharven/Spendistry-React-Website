@@ -10,16 +10,24 @@ console.log('>>>',props.email)
 
 const [password, setPassword] = useState('');
 const [message, setMessage] = useState('');
-const handlenewpassword = () => {
+const [goToLogin, setGoToLogin] = useState(false);
+const handlenewpassword = (e) => {
+e.preventDefault();
    const data = {
-    password:password
+    password:document.getElementById('password').value,
    };
  axios
    .patch(`https://cdbd-18-212-22-122.ngrok.io/auth/b4xabhishek@gmail.com`, data)
    .then(res => console.log(res))
-   .then(() => setMessage('PASSWORD CHANGED! success'))
+   .then(() => {setMessage('PASSWORD CHANGED!')
+setGoToLogin(true)
+})
    .catch(err => 
     ({err: " Try Again -"+err.message}))
+}
+
+if(goToLogin){
+    return <Navigate to="/"/>
 }
 
 return (
@@ -39,13 +47,13 @@ return (
                 <label for="email">New Password</label>
                 <input type="password" className="form-control"  
                 placeholder="Enter new Password" 
-                onChange={(e)=>setPassword(e.target.value)}
+                id="password"
                 required/>
             </div>
             <p id=" " style={{color: "red"}} >{props.email} - Email</p>
-            <button type="submit" className="btn btn-dark btn-lg btn-block" id=" ">Submit</button>
+            <button type="submit"  className="btn btn-dark btn-lg btn-block" id=" ">Submit</button>
             <p className="forgot-password text-center">
-                <a><Link to={"/"}> <h2>{message} </h2>GO TO LOGIN PAGE {password} </Link></a>
+                <a><Link to={"/"}> <h2>{message} </h2>GO TO LOGIN PAGE </Link></a>
                 
             </p> 
         </form>

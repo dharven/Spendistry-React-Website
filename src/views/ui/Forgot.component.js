@@ -10,15 +10,26 @@ class Forgot extends Component {
     state = {
         email: "",
         err: null,
+        err1: null,
         show:false, 
         otp: "", 
-        redirect:false
+        redirect:false,
+        login:false
       };
       onemailChange = e => {
         this.setState({
           email: e.target.value
         });
       };
+
+      componentDidMount() {
+        
+        if (localStorage.getItem('Jwt') !== null || sessionStorage.getItem('Jwt') !== null) {
+          this.setState({login: true});
+      }
+    }
+
+    
     
       onotpChange = e => {
         this.setState({
@@ -35,7 +46,8 @@ class Forgot extends Component {
           .post("https://cdbd-18-212-22-122.ngrok.io/otp/forgotpassword", data)
           // .then(res => console.log(res))
           .then(res => this.setState({err: res.data})) 
-          .then(() => this.setState({show: true}))
+          .then(() => {this.setState({show: true})
+            document.getElementById("email").disabled = true})
           .catch(err => 
             this.setState({err: " Invalid Email -"+err.message}))
       };
@@ -50,9 +62,10 @@ class Forgot extends Component {
           .post("https://cdbd-18-212-22-122.ngrok.io/otp/verifyOtp", data)
           .then(res => console.log(res))
           .then(res => this.setState({otp: res})) 
-          .then(() => this.setState({redirect: true})) 
+          .then(() => {this.setState({redirect: true, err1:null})
+        }) 
           .catch(err => 
-            this.setState({err: " Invalid OTP -"+err.message}))
+            this.setState({err1: " Invalid OTP -"+err.message}))
       };
 
       handlenewpasswordSubmit = e => {
@@ -67,14 +80,39 @@ class Forgot extends Component {
           .then(res => this.setState({otp: res})) 
           .then(() => this.setState({redirect: true})) 
           .catch(err => 
-            this.setState({err: " Invalid OTP -"+err.message}))
+            this.setState({err1: " Invalid OTP -"+err.message}))
+      };
+
+      handleEdit = () => {
+        this.setState({show: false});
+        document.getElementById("email").disabled = false;
+      };
+
+      handleResend = () => {
+        const data = {
+          email: this.state.email,
+        };
+        axios
+          .post("https://cdbd-18-212-22-122.ngrok.io/otp/forgotpassword", data)
+          .then(res => this.setState({err: res.data}))
+          .then(() => this.setState({show: true}))
+          .catch(err =>
+            this.setState({err: " Invalid Email -"+err.message}))
       };
 
 
+    
+
+
       render() {
-        const { err,show, otp, email, redirect } = this.state;
+        const { err, err1,show, otp, email, redirect , login } = this.state;
     return (
         <Fragment>
+
+          {/*
+          write if condition to check if user is logged in or not
+           */}
+          {login ? <Navigate to="/dashboard"/> : null}
    
    <div className="App">
 
@@ -85,7 +123,7 @@ class Forgot extends Component {
             <h3>Forgot Password?</h3>
             <div className="form-group">
                 <label for="email">Email</label>
-                <input type="email" name=" " 
+                <input type="email" name="email" id="email" 
                 className="form-control" value={this.state.email}
                 onChange={this.onemailChange} placeholder="Enter email" 
                 required/>
@@ -93,6 +131,8 @@ class Forgot extends Component {
             <p style={{color: "red"}} >
               {err}
             </p>
+            <a><Link to={"/Forgot"} onClick={this.handleEdit}>Edit Email</Link></a>
+            <a><Link to={"/Forgot"} onClick={this.handleResend}>Resend OTP</Link></a>
             <button type="submit" className="btn btn-dark btn-lg btn-block">Send OTP</button>
             <p className="forgot-password text-right">
                 <a><Link to={"/"}>Back to Log in!</Link></a>
@@ -109,6 +149,7 @@ class Forgot extends Component {
                    onChange={this.onotpChange} placeholder="Enter otp" 
                    required/>
                </div>
+                <p style={{color: "red"}} >{err1}</p>
                <button type="submit" className="btn btn-dark btn-lg btn-block">Submit OTP</button>
                { 
                this.state.redirect === true ?  
