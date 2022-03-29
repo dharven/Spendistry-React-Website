@@ -42,7 +42,7 @@ const SignIn = () => {
               })
               
         }).catch((error)=>{
-            alert("Email already exists")
+            document.getElementById("emailError").innerText = "Email already exists"
         })
     }
     if(registered){
@@ -74,6 +74,8 @@ const SignIn = () => {
                 <label>Email</label>
                 <input type="email" id="email" className="form-control" placeholder="Enter email" required/>
             </div>
+
+            <p id="emailError" style={{color: 'red'}}></p>
 
             <div className="form-group">
                 <label>Password</label>
