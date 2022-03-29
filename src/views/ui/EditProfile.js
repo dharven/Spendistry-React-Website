@@ -59,9 +59,13 @@ const EditProfile = (props) => {
                           }
                         const fetchImage = async () => {
                             const res = await fetch(`https://cdbd-18-212-22-122.ngrok.io/userProfile/${email}.jpeg`);
+                            if(res.status == 404){
+                                setImg(`https://i.ibb.co/pKg43FF/no-dp.jpg`)
+                            } else {
                             const imageBlob = await res.blob();
                             const imageObjectURL = URL.createObjectURL(imageBlob);
                             setImg(imageObjectURL);
+                            }
                         };
                         fetchImage();
                     }, []);
