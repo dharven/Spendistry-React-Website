@@ -50,6 +50,12 @@ const SignIn = () => {
             document.getElementById("emailError").innerText = "Email already exists"
         })
     }
+
+    const rmvErr = () =>{
+        document.getElementById("emailError").innerText = ""
+    }
+
+
     if(registered){
         return(
             <Navigate to="/"/>
@@ -83,7 +89,7 @@ const SignIn = () => {
 
             <div className="form-group">
                 <label>Email</label>
-                <input type="email" id="email" className="form-control" placeholder="Enter email" required/>
+                <input type="email" id="email" className="form-control" placeholder="Enter email" onChange={rmvErr} required/>
             </div>
 
             <p id="emailError" style={{color: 'red'}}></p>
