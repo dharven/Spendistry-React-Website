@@ -19,7 +19,7 @@ const Returned = () => {
     
     <div>
      
-   <h1>This is returned page</h1>
+   <h1>This is ALL invoices page</h1>
      
     </div>
   );

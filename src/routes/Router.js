@@ -5,6 +5,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+// import Returned from "../views/ui/Returned.js";
 
 
 /****Layouts*****/
@@ -20,7 +21,8 @@ const Otp = lazy(() => import("../views/ui/Otp.component.js"));
 const ChangePass = lazy(() => import("../views/ui/ChangePass.js"));
 const EditProfile = lazy(() => import("../views/ui/EditProfile.js"));
 const Reported = lazy(() => import("../views/ui/Reported.js"));
-
+const Returned = lazy(() => import("../views/ui/Returned.js"));
+const AllInvoices = lazy(() => import("../views/ui/AllInvoices.js"));
 /*****Routes******/
 
 const ThemeRoutes = [
@@ -75,6 +77,24 @@ const ThemeRoutes = [
       // { path: "/", element: <Navigate to="/Dashboard" /> },
       { path: "/dashboard", exact: true, element: <Dashboard /> },
       { path: "/Reported", exact: true, element: <Reported /> },
+    ],
+  },
+  {
+    path: "",
+    element: <FullLayout />,
+    children: [
+      // { path: "/", element: <Navigate to="/Dashboard" /> },
+      { path: "/dashboard", exact: true, element: <Dashboard /> },
+      { path: "/Returned", exact: true, element: <Returned /> },
+    ],
+  },
+  {
+    path: "",
+    element: <FullLayout />,
+    children: [
+      // { path: "/", element: <Navigate to="/Dashboard" /> },
+      { path: "/dashboard", exact: true, element: <Dashboard /> },
+      { path: "/AllInvoices", exact: true, element: <AllInvoices /> },
     ],
   },
 ];

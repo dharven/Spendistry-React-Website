@@ -9,7 +9,11 @@ const navigation = [
     href: "/dashboard",
     icon: "bi bi-speedometer2",
   },
-  
+  {
+    title: "All Invoices",
+    href: "/AllInvoices",
+    icon: "bi bi-columns",
+  },
   {
     title: "Reported Invoices",
     href: "/Reported",
@@ -20,11 +24,7 @@ const navigation = [
     href: "/Returned",
     icon: "bi bi-layout-split",
   },
-  {
-    title: "Statistics",
-    href: "/Statistics",
-    icon: "bi bi-columns",
-  },
+ 
   {
     title: "Edit Profile",
     href: "/Edit",
