@@ -50,7 +50,7 @@ class Forgot extends Component {
             document.getElementById("email").disabled = true})
           .catch(err => 
             this.setState({err: " Invalid Email -"+err.message}))
-      };
+    };
 
       handleotpSubmit = e => {
         e.preventDefault();
@@ -89,6 +89,7 @@ class Forgot extends Component {
       };
 
       handleResend = () => {
+        if(this.state.email !== ""){
         const data = {
           email: this.state.email,
         };
@@ -98,7 +99,8 @@ class Forgot extends Component {
           .then(() => this.setState({show: true}))
           .catch(err =>
             this.setState({err: " Invalid Email -"+err.message}))
-      };
+      }
+    };
 
 
     
