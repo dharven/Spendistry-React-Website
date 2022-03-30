@@ -33,10 +33,8 @@ const FullLayout = () => {
         setLogin(true);
         }
       }).catch((error) => {
-        localStorage.removeItem('Jwt');
-        sessionStorage.removeItem('Jwt');
-        localStorage.removeItem('email');
-        sessionStorage.removeItem('email');
+       localStorage.clear();
+        sessionStorage.clear();
         console.log(error.message);
         console.log(error.response.data);
         setLoggedInVerify(true);
