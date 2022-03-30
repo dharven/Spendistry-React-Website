@@ -19,6 +19,7 @@ const Forgot = lazy(() => import("../views/ui/Forgot.component.js"));
 const Otp = lazy(() => import("../views/ui/Otp.component.js"));
 const ChangePass = lazy(() => import("../views/ui/ChangePass.js"));
 const EditProfile = lazy(() => import("../views/ui/EditProfile.js"));
+const Reported = lazy(() => import("../views/ui/Reported.js"));
 
 /*****Routes******/
 
@@ -65,6 +66,15 @@ const ThemeRoutes = [
       // { path: "/", element: <Navigate to="/Dashboard" /> },
       { path: "/dashboard", exact: true, element: <Dashboard /> },
       { path: "/Edit", exact: true, element: <EditProfile /> },
+    ],
+  },
+  {
+    path: "",
+    element: <FullLayout />,
+    children: [
+      // { path: "/", element: <Navigate to="/Dashboard" /> },
+      { path: "/dashboard", exact: true, element: <Dashboard /> },
+      { path: "/Reported", exact: true, element: <Reported /> },
     ],
   },
 ];
