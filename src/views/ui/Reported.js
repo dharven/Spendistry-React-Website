@@ -48,8 +48,8 @@ const Reported = () => {
         <p id="name-reported">Business Name: {item.reportTo}</p>
         <p id="name-reported">Email: {item.reportBy}</p>
         <p id="name-reported">Phone: {item.customerNumber}</p>
-        <p id="name-reported">Date: {item.reportTime}</p>
-        <p id="name-reported">Time: {item.reportTime}</p>
+        <p id="name-reported">Date: {(new Date(item.reportTime)).toLocaleDateString()}</p>
+        <p id="name-reported">Time: {(new Date(item.reportTime)).toLocaleTimeString()}</p>
         <p id="name-reported">Reason: {item.reportReason}</p>
       </Card>
   
