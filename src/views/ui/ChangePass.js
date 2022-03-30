@@ -50,8 +50,8 @@ return (
                 id="password"
                 required/>
             </div>
-            <p id=" " style={{color: "red"}} >{props.email} - Email</p>
-            <button type="submit"  className="btn btn-dark btn-lg btn-block" id=" ">Submit</button>
+            <p id=" " style={{color: "red"}} >Email: {props.email} </p>
+            <button type="submit"  className="btn btn-dark btn-lg btn-block" id="Sign-btn">Submit</button>
             <p className="forgot-password text-center">
                 <a><Link to={"/"}> <h2>{message} </h2>GO TO LOGIN PAGE </Link></a>
                 

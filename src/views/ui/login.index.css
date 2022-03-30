@@ -124,3 +124,11 @@
     padding-left: 37%;
     padding-top: 3%;
   }
+  #edit-email-forgot-password{
+    text-decoration: none;
+  }
+  #resend-otp{
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+  }

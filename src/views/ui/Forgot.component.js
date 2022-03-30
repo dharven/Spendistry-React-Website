@@ -131,9 +131,10 @@ class Forgot extends Component {
             <p style={{color: "red"}} >
               {err}
             </p>
-            <a><Link to={"/Forgot"} onClick={this.handleEdit}>Edit Email</Link></a>
-            <a><Link to={"/Forgot"} onClick={this.handleResend}>Resend OTP</Link></a>
-            <button type="submit" className="btn btn-dark btn-lg btn-block">Send OTP</button>
+            <a><Link to={"/Forgot"} onClick={this.handleEdit} id="edit-email-forgot-password">Edit Email</Link></a>
+            <button type="submit" className="btn btn-dark btn-lg btn-block" id="Sign-btn">Send OTP</button>
+            
+            <a><Link to={"/Forgot"} onClick={this.handleResend} id="resend-otp">Resend OTP</Link></a>
             <p className="forgot-password text-right">
                 <a><Link to={"/"}>Back to Log in!</Link></a>
             </p>
@@ -150,7 +151,7 @@ class Forgot extends Component {
                    required/>
                </div>
                 <p style={{color: "red"}} >{err1}</p>
-               <button type="submit" className="btn btn-dark btn-lg btn-block">Submit OTP</button>
+               <button type="submit" className="btn btn-dark btn-lg btn-block" id="Sign-btn">Submit OTP</button>
                { 
                this.state.redirect === true ?  
                <>
