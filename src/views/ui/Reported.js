@@ -39,11 +39,15 @@ const Reported = () => {
   return (
     
     <div>
+      <div class="input-group">
+  <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+  <button type="button" class="btn btn-outline-primary">search</button>
+</div><br />
       <Row>
-    <Col md="6" lg="4">
+    
 
 {data.map((item) => (                   
-    
+    <Col md="6" lg="4">
       <Card>
         <p id="name-reported">Business Name: {item.reportTo}</p>
         <p id="name-reported">Email: {item.reportBy}</p>
@@ -52,9 +56,9 @@ const Reported = () => {
         <p id="name-reported">Time: {(new Date(item.reportTime)).toLocaleTimeString()}</p>
         <p id="name-reported">Reason: {item.reportReason}</p>
       </Card>
-  
+      </Col>
      ))}
-       </Col>
+      
   </Row>
     </div>
   );
