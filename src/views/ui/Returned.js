@@ -38,11 +38,21 @@ const Returned = () => {
     fetchData();
   } , []);
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const value = e.target.value;
+    data.filter(item => {
+      if (item.invoiceSentTo.toLowerCase().includes(value.toLowerCase())) {
+        console.log(item)
+      }
+    })
+  }
+
   return (
     
     <div>
      <div class="input-group">
-  <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+  <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" onChange={handleSearch} />
   <button type="button" class="btn btn-outline-primary">search</button>
 </div><br />
     <Row>
