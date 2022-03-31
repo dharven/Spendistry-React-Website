@@ -1,6 +1,8 @@
 import { Col, Row } from "reactstrap";
 import React, {useState,useEffect} from 'react'
 import fileDownload from 'js-file-download';
+import { Modal } from "react-responsive-modal";
+
 
 import {
   Card,
@@ -16,6 +18,11 @@ const AllInvoices = () => {
 
   const [data, setData] = useState([]);
   const [search, setSearch] = useState('');
+
+  //modal
+  const [open, setOpen] = useState(false);
+  const onOpenModal = () => setOpen(true);
+  const onCloseModal = () => setOpen(false)
 
 
   useEffect(() => {
@@ -114,11 +121,11 @@ const AllInvoices = () => {
         }
       }).map((item) => (
 
-        
      <Col md="6" lg="4">
       <Card>
-       <h5 id="returned-header">{(item.invoiceTitle).toUpperCase()}<span id="all-exclaim-logo"><i class="bi bi-exclamation-octagon-fill" ></i></span>
+       <h5 id="returned-header">{(item.invoiceTitle).toUpperCase()}<span id="all-exclaim-logo"onClick={() => onOpenModal(item)}><i class="bi bi-exclamation-octagon-fill" ></i></span>
        <span id="all-exclaim-download" onClick={() => pdfDownload(item)}>
+         
        {/* <a href={"https://cdbd-18-212-22-122.ngrok.io/pdf/"+  item.invoiceSentTo + "/" + item.invoiceSentBy + "/" + item._id} download="invoice.pdf"> */}
        {/* <span id="all-exclaim-download" > */}
 
@@ -173,8 +180,8 @@ const AllInvoices = () => {
     
   </Row>
      
-     
     </div>
+ 
   );
 };
 
