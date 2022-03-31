@@ -64,11 +64,11 @@ const ThemeRoutes = [
     // ],
   },
   {
-    path: "",
+    path: "/QRshare/:id",
     element: <QRshare />,
-    children: [
-      { path: "/QRshare", element: <Navigate to="/QRshare" /> },
-    ],
+    // children: [
+    //   { path: "/QRshare", element: <Navigate to="/QRshare" /> },
+    // ],
   },
   {
     path: "",

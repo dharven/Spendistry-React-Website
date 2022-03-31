@@ -9,13 +9,17 @@ import {
 import axios from 'axios';
 import "../dashboard.css"
 import QRCode from "react-qr-code";
+import { useParams } from 'react-router-dom'
 
 
 
-const QRshare = () => {
+const QRshare = (params) => {
 
-  const [data, setData] = useState([{qr:""}]);
-
+  const [data, setData] = useState("");
+  const {id} = useParams();
+useEffect(() => {
+  setData(id.replaceAll("₹", '/'));
+},[]);
  
 
   
@@ -30,7 +34,7 @@ const QRshare = () => {
       <Card body className="text-center">
       
         <CardText>
-        <QRCode value={data[0].qr} size={700}/>
+        <QRCode value={data} size={700}/>
         </CardText>
         {/* <div>
           <Button color="white"><i class="bi bi-share" ></i></Button>
