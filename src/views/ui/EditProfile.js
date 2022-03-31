@@ -12,6 +12,7 @@ function EditProfile(props) {
     const [ mobileNumber, setmobileNumber] = useState("")
     const [ address, setaddress] = useState("")
     const [show, setShow] = useState("")
+    const [confimation, setconfimation] = useState(null)
     
     useEffect(() => {
         if (localStorage.getItem('email') !== null ) {
@@ -19,6 +20,7 @@ function EditProfile(props) {
           } else {
             var email = sessionStorage.getItem('email')
           }
+
         const handlegetdata = async () => {
             const { data} = await axios.get("https://cdbd-18-212-22-122.ngrok.io/user/"+email)
             setfname(data.fname)
@@ -79,13 +81,15 @@ function EditProfile(props) {
         const changeHandler = (event) => {
             setSelectedFile(event.target.files);
             setisSelected(true);
+            setconfimation(null)
+            document.getElementById("pro-pic").src = URL.createObjectURL(event.target.files[0]);
         };
     
         const handleSubmission = () => {
             const formData = new FormData();
-    
+            if(selectedFile){
             formData.append('userProfile', selectedFile[0]);
-
+            
             // const headers = {
             //     'Content-Type': 'Application/Json',
             //     'Accept': 'Application/Json'
@@ -99,14 +103,22 @@ function EditProfile(props) {
                     // headers,
                 }
             )
-                .then((response) => response.json())
+                // .then((response) => response.json())
                 .then((result) => {
                     console.log('Success:', result);
+                    //bring back p tag with id confirmation
+            
+                    // document.getElementById("confirmation").show();
+                    setconfimation("Image Uploaded!!")
                 })
                 .catch((error) => {
                     console.error('Error:>>>>>', error,selectedFile );
-                    window.location.reload(false);
+                    //show p tag with id confirmation
+                    setconfimation("Error in uploading of image!!")
                 });
+            } else {
+                setconfimation("select the file first!!")
+            }
         };
 
             // const refreshPage = setTimeout(() => {
@@ -143,9 +155,10 @@ function EditProfile(props) {
              <h3>Edit Profile</h3>
             <div id="edit-profile-pic">
             <img src={img} alt="Image" className="image" id="pro-pic" width="50" height="50"/>
+            <p id="confirmation">{confimation}</p>
             </div>
             <div id="edit-profile-input-field">
-        <input type="file" name="userProfile" onChange={changeHandler} accept="image/*" id="file-pic"/>
+        <input type="file"  name="userProfile" onChange={changeHandler} accept="image/*" id="file-pic"/>
         </div>
         <div className="form-group">
                 
