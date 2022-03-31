@@ -114,10 +114,10 @@ function EditProfile(props) {
                 .catch((error) => {
                     console.error('Error:>>>>>', error,selectedFile );
                     //show p tag with id confirmation
-                    setconfimation("Error in uploading of image!")
+                    setconfimation("Error in uploading the image!")
                 });
             } else {
-                setconfimation("Select the file first!")
+                setconfimation("Select a file first!")
             }
         };
 
