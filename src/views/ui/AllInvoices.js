@@ -33,30 +33,27 @@ const AllInvoices = () => {
       const result = await axios(
         'https://cdbd-18-212-22-122.ngrok.io/invoice/findEle/' + email + "/" + id,
       );
-      console.log(result.data)
+      // console.log(result.data)
       setData(result.data[0].bussinessName[0].invoices);
-      console.log(result.data[0].bussinessName[0].invoices)     
+      // console.log(result.data[0].bussinessName[0].invoices)     
       
     };
   } else {
     var fetchData = async () => {
       if (localStorage.getItem('email') !== null ) {
         var email = localStorage.getItem('email')
-        var id = sessionStorage.getItem('id')
-
       } else {
         var email = sessionStorage.getItem('email')
-        var id = sessionStorage.getItem('id')
       }
       const result = await axios(
         'https://cdbd-18-212-22-122.ngrok.io/invoice/' + email
       );
-      console.log("all",result.data)
-      console.log("test", result.data.businessName)
+      // console.log("all",result.data)
+      // console.log("test", result.data.businessName)
       for(var i = 0; i < result.data.businessName.length; i++){
         //for loop for invoices
         for(var j = 0; j < result.data.businessName[i].invoices.length; j++){
-          console.log("invoice", result.data.businessName[i].invoices[j])
+          // console.log("invoice", result.data.businessName[i].invoices[j])
           setData(data => [...data, result.data.businessName[i].invoices[j]]);
         }
       }
