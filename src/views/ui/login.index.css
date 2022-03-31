@@ -132,3 +132,8 @@
     display: flex;
     justify-content: center;
   }
+  #confirmation{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

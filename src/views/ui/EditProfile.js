@@ -109,15 +109,15 @@ function EditProfile(props) {
                     //bring back p tag with id confirmation
             
                     // document.getElementById("confirmation").show();
-                    setconfimation("Image Uploaded!!")
+                    setconfimation("Image Uploaded!")
                 })
                 .catch((error) => {
                     console.error('Error:>>>>>', error,selectedFile );
                     //show p tag with id confirmation
-                    setconfimation("Error in uploading of image!!")
+                    setconfimation("Error in uploading of image!")
                 });
             } else {
-                setconfimation("select the file first!!")
+                setconfimation("Select the file first!")
             }
         };
 
@@ -155,12 +155,13 @@ function EditProfile(props) {
              <h3>Edit Profile</h3>
             <div id="edit-profile-pic">
             <img src={img} alt="Image" className="image" id="pro-pic" width="50" height="50"/>
-            <p id="confirmation">{confimation}</p>
+            
             </div>
             <div id="edit-profile-input-field">
         <input type="file"  name="userProfile" onChange={changeHandler} accept="image/*" id="file-pic"/>
         </div>
         <div className="form-group">
+        <p id="confirmation">{confimation}</p>
                 
 
         <div id="edit-profile-submit-field"> 
