@@ -4,7 +4,10 @@ import Header from "./Header";
 import { Container } from "reactstrap";
 import React, {useState,useEffect} from 'react'
 import axios from 'axios';
-import "./loader/Loader"
+import { Spinner } from "reactstrap";
+import "./loader/loader.scss";
+
+
 
 // export const AuthContext = React.createContext();
 const FullLayout = () => {
@@ -83,10 +86,11 @@ const FullLayout = () => {
           )
         } else {
           return (
-            <div>
-              <h3>Loading</h3>
-            {/* <Loader /> */}
+            <div className="fallback-spinner">
+            <div className="loading">
+              <Spinner color="primary" />
             </div>
+          </div>
           )
         }
       })()}
