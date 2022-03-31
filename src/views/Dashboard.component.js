@@ -18,6 +18,7 @@ const Starter = () => {
 
   const [data, setData] = useState([{MonthlyTotalAll:"", AllTimeTotal:"", qr:""}]);
   const [qr, setQr] = useState('');
+  const [notify, setNotify] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,6 +42,19 @@ const Starter = () => {
 
     fetchData();
   }, []);
+
+  const handleShare = (e) => {
+    e.preventDefault();
+    navigator.clipboard
+  .writeText("https://spendistry.netlify.app/#/Qrshare/"+qr)
+  .then(() => {console.log("Copied to clipboard")
+      setNotify("Copied to clipboard")
+      setTimeout(function(){
+        setNotify(null)
+     }, 2000);
+})
+  .catch((err) => console.log(err))
+  }
 
   
   return (
@@ -78,7 +92,8 @@ const Starter = () => {
         <QRCode value={data[0].qr} size={100}/>
         </CardText>
         <div>
-          <Button color="white"><Link to={"/Qrshare/"+qr}><i class="bi bi-share" ></i></Link></Button>
+          <Button onClick={handleShare} color="white"><i class="bi bi-share" ></i></Button>
+          <p id="notify">{notify}</p>
         </div>
       </Card>
     </Col>
