@@ -1,8 +1,9 @@
 import { Col, Row } from "reactstrap";
 import React, {useState,useEffect} from 'react'
 import fileDownload from 'js-file-download';
-import { Modal } from "react-responsive-modal";
-
+// import { Modal } from "react-responsive-modal";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Modal } from 'react-bootstrap';
 
 import {
   Card,
@@ -18,11 +19,40 @@ const AllInvoices = () => {
 
   const [data, setData] = useState([]);
   const [search, setSearch] = useState('');
+  const [message, setMessage] = useState('');
 
   //modal
-  const [open, setOpen] = useState(false);
-  const onOpenModal = () => setOpen(true);
-  const onCloseModal = () => setOpen(false)
+  // const [open, setOpen] = useState(false);
+  // const onOpenModal = () => setOpen(true);
+  // const onCloseModal = () => setOpen(true)
+  
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = (item) =>{ 
+    setShow(true)
+    const saveBtn = document.getElementById("sendReport");
+    console.log(saveBtn)
+    saveBtn && saveBtn.addEventListener('click', () => {
+      axios.post('https://cdbd-18-212-22-122.ngrok.io/report',{
+        "reportBy":item.invoiceSentTo,
+        "reportTo":item.invoiceSentBy,
+        "customerNumber": "",
+        "customerName": "",
+        "businessName": item.invoiceTitle,
+        "businessNumber": item.businessContactNo,
+        "reportReason": document.getElementById('reason').value,
+        "InvoiceID": item._id,
+      }).then(res => {
+        console.log(res)
+        setMessage("Reported successfully")
+        setShow(false)
+      })
+
+      setTimeout(function(){
+        setMessage(null)
+     }, 2000);
+  });
+}
 
 
   useEffect(() => {
@@ -98,14 +128,31 @@ const AllInvoices = () => {
       console.log(err)
     })
 
-  }
+    }
+  
 
-  return (
+    return (
     
     <div>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Reason for reporting</Modal.Title>
+        </Modal.Header>
+        <Modal.Body><textarea cols={60} rows={4} id="reason"></textarea></Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" id="sendReport" >
+            Report
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      
      <div class="input-group">
-  <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" onChange={handleSearch} />
-</div><br />
+   <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" onChange={handleSearch} />
+    </div><br />
+
     <Row>
     {data.filter((item)=>{
         if(search === ''){
@@ -123,15 +170,24 @@ const AllInvoices = () => {
 
      <Col md="6" lg="4">
       <Card>
-       <h5 id="returned-header">{(item.invoiceTitle).toUpperCase()}<span id="all-exclaim-logo"onClick={() => onOpenModal(item)}><i class="bi bi-exclamation-octagon-fill" ></i></span>
+      <p id="returned-header">{message}</p>
+       <h5 id="returned-header">{(item.invoiceTitle).toUpperCase()}
+       {/* <div> */}
+       <span id="all-exclaim-logo"onClick={()=>handleShow(item)}><i class="bi bi-exclamation-octagon-fill" ></i></span>
+
+
        <span id="all-exclaim-download" onClick={() => pdfDownload(item)}>
+        
          
        {/* <a href={"https://cdbd-18-212-22-122.ngrok.io/pdf/"+  item.invoiceSentTo + "/" + item.invoiceSentBy + "/" + item._id} download="invoice.pdf"> */}
        {/* <span id="all-exclaim-download" > */}
 
          <i class="bi bi-download" ></i></span>
+         
+         {/* </div> */}
          {/* </a> */}
          </h5>
+         
        <p id="returned-business">Business Address: {item.businessAddress}</p>
       {/* city.toUpperCase */}
        <h5 id="returned-header">SUBJECT TO {(item.city)} JURISDICTION</h5>
@@ -176,9 +232,11 @@ const AllInvoices = () => {
       </Card>
       
     </Col>
+   
     ))}
     
   </Row>
+
      
     </div>
  
