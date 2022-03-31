@@ -24,21 +24,29 @@ useEffect(() => {
 
   
   return (
-    
-    <div>
-     
+    //center div vertically
+    // <div  style={{justifyContent : "center", alignItems : "center", display : "flex", flexDirection : "column"}}>
+      <div>    
+     <div  style={{justifyContent : "center", alignItems : "center", display : "flex", flexDirection : "column",margin:"auto",
+     position: "fixed",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)"
+     }}> 
     
    
     
 
-      <Card body className="text-center">
-      
-        <CardText>
-        <QRCode value={data} size={700}/>
+      <Card body className="text-center" >
+      <CardText  >
+    This is your QR
+    </CardText>
+        <CardText  >
+        <QRCode value={data} />
         </CardText>
         {/* <div>
           <Button color="white"><i class="bi bi-share" ></i></Button>
-        </div> */}
+      </div> */}
       </Card>
     
    
@@ -46,6 +54,8 @@ useEffect(() => {
      
      
     </div>
+    </div>
+
   );
 };
 
