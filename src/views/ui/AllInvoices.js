@@ -18,6 +18,8 @@ const AllInvoices = () => {
 
 
   const [data, setData] = useState([]);
+  const [search, setSearch] = useState('');
+
 
   useEffect(() => {
     if(sessionStorage.getItem('id') !== null){
@@ -71,6 +73,7 @@ const AllInvoices = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     const value = e.target.value;
+    setSearch(value);
    
   }
 
@@ -79,10 +82,21 @@ const AllInvoices = () => {
     <div>
      <div class="input-group">
   <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" onChange={handleSearch} />
-  <button type="button" class="btn btn-outline-primary">search</button>
 </div><br />
     <Row>
-      {data.map((item) => (
+    {data.filter((item)=>{
+        if(search === ''){
+          return data;
+        } else if((item.invoiceTitle).toLowerCase().includes((search).toLowerCase())){
+          return item;
+        } else if((item.invoiceSentBy).toLowerCase().includes((search).toLowerCase())){
+          return item;
+        } else if (item.invoiceNumber == parseInt(search) ){
+          return item;
+        } else if ( item.invoiceTime.toString().includes( new Date(search).toLocaleDateString()) ){
+          return item;
+        }
+      }).map((item) => (
 
         
      <Col md="6" lg="4">
