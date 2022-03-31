@@ -2,6 +2,9 @@ body{
     background-color: #E7F5F8;
     
 }
+img{
+	object-fit: cover;
+}
 #name-reported{
     padding-left: 4%;
     padding-top: 2%;
