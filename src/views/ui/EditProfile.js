@@ -140,21 +140,24 @@ function EditProfile(props) {
          <label>Password</label>
                 <Link to ="/Forgot"> <button>Change Password</button></Link>
             </div> */}
-        <form onSubmit={handleSubmit} >
-            <h3>Edit Profile</h3>
-            <div className="form-group">
-                <div id="edit-profile-pic">
+             <h3>Edit Profile</h3>
+            <div id="edit-profile-pic">
             <img src={img} alt="Image" className="image" id="pro-pic" width="50" height="50"/>
             </div>
             <div id="edit-profile-input-field">
         <input type="file" name="userProfile" onChange={changeHandler} accept="image/*" id="file-pic"/>
         </div>
+        <div className="form-group">
+                
 
         <div id="edit-profile-submit-field"> 
         
 				<button onClick={() => { handleSubmission();}} id="edit-submit-btn">Submit</button>
 			</div>
             </div>
+        <form onSubmit={handleSubmit} >
+           
+            
             <div className="form-group">
                 <label>Email</label>
                 <input disabled value={emails} type="email" id="email" className="form-control"
