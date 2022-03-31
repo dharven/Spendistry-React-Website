@@ -10,6 +10,7 @@ import {
 import axios from 'axios';
 import "./dashboard.css"
 import QRCode from "react-qr-code";
+import { Link } from "react-router-dom";
 
 
 
@@ -73,7 +74,7 @@ const Starter = () => {
         <QRCode value={data[0].qr} size={100}/>
         </CardText>
         <div>
-          <Button color="white"><i class="bi bi-share" ></i></Button>
+          <Button color="white"><Link to={"/Qrshare"}><i class="bi bi-share" ></i></Link></Button>
         </div>
       </Card>
     </Col>
