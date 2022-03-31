@@ -65,14 +65,14 @@ const Returned = () => {
        <p id="returned-business">GST No: {item.gstNumber}</p>
        <p id="returned-business">Email ID: {item.invoiceSentBy}</p>
        <p id="returned-business">Phone No: {item.businessContactNo}</p>
-       <p id="returned-business">Date: {(new Date(item.invoiceTime)).toLocaleDateString()}</p>
-       <p id="returned-business">Time: {(new Date(item.invoiceTime)).toLocaleTimeString()}</p>
+       <p id="returned-business">Date: {(new Date(item.invoiceTime)).toLocaleDateString()}<span id="returned-igst">Time: {(new Date(item.invoiceTime)).toLocaleTimeString()}</span></p>
+       
        <p id="returned-business">client: {item.invoiceSentTo}</p>
        <p id="returned-business">Invoice No: {item.invoiceNumber}</p>
        <div id="returned-x-scroll">
          {/* <p id="returned-business"><span id="returned-item">Item</span><span id="returned-Qnt">Qnt</span><span id="returned-Price">Price</span><span id="returned-total">Total</span></p> 
          <p id="returned-item-name">woooooooooooooooooooooooooooooooooo</p><span id="returned-Qnt-name">Qnt</span><span id="returned-Price">Price</span><span id="returned-total">Total</span> */}
-         <table>
+         <table id="returned-table">
             <tr>
               <th>Item</th>
               <th>Qnt</th>
@@ -92,11 +92,11 @@ const Returned = () => {
             
          </table>
          </div>
-         <p id="returned-business">Discount: {item.discount}</p>
-         <p id="returned-business">IGST: {item.invoiceIGST}</p>
-         <p id="returned-business">CGST: {item.invoiceCGST}</p>
-         <p id="returned-business">UTGST: {item.invoiceUTGST}</p>
-         <p id="returned-business">SGST: {item.invoiceSGST}</p>
+         <p id="returned-business"><span >Discount: {item.discount}</span><span id="returned-igst">IGST: {item.invoiceIGST}</span><span id="returned-cgst">CGST: {item.invoiceCGST}</span></p>
+         
+         
+         <p id="returned-business"><span >UTGST: {item.invoiceUTGST}</span><span id="returned-igst">SGST: {item.invoiceSGST}</span></p>
+         
          <p id="returned-business">Net total: {item.roundoff}</p>
        
       

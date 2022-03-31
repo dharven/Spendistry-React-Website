@@ -28,13 +28,14 @@ body{
     
     
     overflow: auto;
-    padding-left: 2%;
-    max-width: 70px;
+   
+    max-width: 10px;
   height: 25px;
 }
 #returned-x-scroll{
     height: 80px;
-    overflow-y: scroll;
+    width: 100%;
+    overflow-y: auto;
     border: 1px solid gray;
 }
 #returned-Qnt-name{
@@ -43,4 +44,14 @@ body{
 
     max-width: 70px;
   height: 25px;
+}
+#returned-igst{
+    padding-left: 14%;
+}
+#returned-cgst{
+    padding-left: 14%;
+}
+#returned-table{
+    width: 100%;
+
 }
