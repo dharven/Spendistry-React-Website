@@ -17,6 +17,7 @@ import { Link } from "react-router-dom";
 const Starter = () => {
 
   const [data, setData] = useState([{MonthlyTotalAll:"", AllTimeTotal:"", qr:""}]);
+  const [qr, setQr] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,6 +32,9 @@ const Starter = () => {
       );
 
       setData(result.data);
+      var QR = result.data[0].qr.replaceAll("/", '₹');
+
+      setQr(QR);
       console.log(result.data)     
       
     };
@@ -74,7 +78,7 @@ const Starter = () => {
         <QRCode value={data[0].qr} size={100}/>
         </CardText>
         <div>
-          <Button color="white"><Link to={"/Qrshare"}><i class="bi bi-share" ></i></Link></Button>
+          <Button color="white"><Link to={"/Qrshare/"+qr}><i class="bi bi-share" ></i></Link></Button>
         </div>
       </Card>
     </Col>
