@@ -39,6 +39,8 @@ const navigation = [
 
 
 const Sidebar = () => {
+  const [reload, setReload] = useState(false)
+
   const Logout = () => {
     
     window.location.href = "/";
@@ -59,6 +61,26 @@ if (localStorage.getItem('email') !== null || localStorage.getItem('Jwt') !== nu
   const showMobilemenu = () => {
     setShow(!show);
   };
+
+  const remove = (e) => {
+    e.preventDefault();
+    // console.log("e",e.target.innerHTML)
+    sessionStorage.removeItem("id")
+    // console.log(navigation[1].title)
+    if(e.target.innerHTML.match(navigation[1].title)){
+    setReload(true)
+    // console.log("inside if")
+    } else {
+      setReload(false)
+    }
+
+  }
+
+  if(reload){
+    window.location.reload()
+    // console.log("reload", reload)
+  }
+
   return (
     <div className="bg-dark">
       <div className="menuButton">
@@ -75,7 +97,7 @@ if (localStorage.getItem('email') !== null || localStorage.getItem('Jwt') !== nu
       <div className="p-3 mt-2">
         <><Nav vertical className="sidebarNav">
             {navigation.map((navi, index) => (
-              <NavItem key={index} className="sidenav-bg">
+              <NavItem key={index} className="sidenav-bg" onClick={remove}>
                 <Link
                   to={navi.href}
                   className={location.pathname === navi.href
@@ -83,7 +105,7 @@ if (localStorage.getItem('email') !== null || localStorage.getItem('Jwt') !== nu
                     : "nav-link py-3"}
                 >
                   <i className={navi.icon}></i>
-                  <span className="ms-3 d-inline-block">{navi.title}</span>
+                  <span className="ms-3 d-inline-block" >{navi.title}</span>
                 </Link>
               </NavItem>
             ))}
