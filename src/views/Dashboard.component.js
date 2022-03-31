@@ -46,8 +46,8 @@ const Starter = () => {
   const handleShare = (e) => {
     e.preventDefault();
     navigator.clipboard
-  .writeText("https://spendistry.netlify.app/#/Qrshare/"+qr)
-  .then(() => {console.log("Copied to clipboard")
+  .writeText(window.location.hostname+"/#/Qrshare/"+qr)
+  .then(() => {console.log(window.location.hostname);
       setNotify("Copied to clipboard")
       setTimeout(function(){
         setNotify(null)
