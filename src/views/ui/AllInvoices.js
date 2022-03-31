@@ -20,20 +20,21 @@ const AllInvoices = () => {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState('');
   const [message, setMessage] = useState('');
+  const [item, setItem] = useState({});
 
   //modal
   // const [open, setOpen] = useState(false);
   // const onOpenModal = () => setOpen(true);
   // const onCloseModal = () => setOpen(true)
-  
+  const saveBtn = document.querySelector("[sendReport]");
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = (item) =>{ 
-    setShow(true)
-    const saveBtn = document.getElementById("sendReport");
-    console.log(saveBtn)
-    saveBtn && saveBtn.addEventListener('click', () => {
-      axios.post('https://cdbd-18-212-22-122.ngrok.io/report',{
+  const handleShow = (item) => {
+    setShow(true);
+    setItem(item);
+  }
+  const handleClose = () => {
+    setShow(false);
+    axios.post('https://cdbd-18-212-22-122.ngrok.io/report',{
         "reportBy":item.invoiceSentTo,
         "reportTo":item.invoiceSentBy,
         "customerNumber": "",
@@ -46,13 +47,17 @@ const AllInvoices = () => {
         console.log(res)
         setMessage("Reported successfully")
         setShow(false)
+      }).catch(err => {
+        console.log(err)
+        setMessage("Error occured")
+        setShow(false)
       })
 
       setTimeout(function(){
         setMessage(null)
-     }, 2000);
-  });
-}
+     }, 4000);
+  }
+
 
 
   useEffect(() => {
@@ -93,7 +98,7 @@ const AllInvoices = () => {
           setData(data => [...data, result.data.businessName[i].invoices[j]]);
         }
       }
-      console.log(123,123,data)
+      // console.log(123,123,data)
       
       // setData(result.data.businessName);
       
@@ -143,7 +148,7 @@ const AllInvoices = () => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" id="sendReport" >
+          <Button variant="primary" id="sendReport" onClick={handleClose} >
             Report
           </Button>
         </Modal.Footer>
