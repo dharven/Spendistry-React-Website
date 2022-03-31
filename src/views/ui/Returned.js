@@ -49,8 +49,9 @@ const Returned = () => {
       {data.map((item) => (
     <Col md="6" lg="4">
       <Card>
-       <h5 id="returned-header">ANDROID DEVELOPER</h5>
+       <h5 id="returned-header">{(item.invoiceTitle).toUpperCase()}</h5>
        <p id="returned-business">Business Address: {item.businessAddress}</p>
+       <h5 id="returned-header">SUBJECT TO {(item.city).toUpperCase()} JURISDICTION</h5>
        <p id="returned-business">GST No: {item.gstNumber}</p>
        <p id="returned-business">Email ID: {item.invoiceSentBy}</p>
        <p id="returned-business">Phone No: {item.businessContactNo}</p>
@@ -90,7 +91,7 @@ const Returned = () => {
        
       
        <p id="returned-business">Payment method: {item.invoicePaymentMode}</p>
-       <p id="returned-business">{item.invoiceDescription}</p>
+       <p id="returned-header">{item.invoiceDescription}</p>
         {/* <div>
           <Button color="light-danger">{data[0]._id}</Button>
         </div> */}
