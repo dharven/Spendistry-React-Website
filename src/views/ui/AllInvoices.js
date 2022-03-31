@@ -11,10 +11,6 @@ import {
 import axios from 'axios';
 import "../dashboard.css"
 
-
-// https://cdbd-18-212-22-122.ngrok.io/invoice/findele/shashank@gmail.com/sha@gmail.com
-
-
 const AllInvoices = () => {
 
 
@@ -87,7 +83,7 @@ const AllInvoices = () => {
       }
     ).then(res => {
       console.log("pdf", res.data)
-      fileDownload(res.data, "filename.pdf");
+      fileDownload(res.data, item.invoiceSentBy+"_"+item.roundoff+".pdf");
 
 
       
