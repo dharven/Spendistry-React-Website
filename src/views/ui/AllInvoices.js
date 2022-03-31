@@ -1,5 +1,6 @@
 import { Col, Row } from "reactstrap";
 import React, {useState,useEffect} from 'react'
+import fileDownload from 'js-file-download';
 
 import {
   Card,
@@ -79,14 +80,17 @@ const AllInvoices = () => {
 
   const pdfDownload = async (item) => {
     console.log("pdf", item)
-    const pdf = await axios(
+    const pdf = await axios.get(
       'https://cdbd-18-212-22-122.ngrok.io/pdf/' + item.invoiceSentTo + "/" + item.invoiceSentBy + "/" + item._id,
+      {
+        responseType: 'blob'
+      }
     ).then(res => {
-      //download the pdf file
       console.log("pdf", res.data)
-      // var file = new Blob([res.data], {type: 'application/pdf'});
-      // var fileURL = URL.createObjectURL(file);
-      // window.open(fileURL);
+      fileDownload(res.data, "filename.pdf");
+
+
+      
     }).catch(err => {
       console.log(err)
     })
@@ -117,7 +121,14 @@ const AllInvoices = () => {
         
      <Col md="6" lg="4">
       <Card>
-       <h5 id="returned-header">{(item.invoiceTitle).toUpperCase()}<span id="all-exclaim-logo"><i class="bi bi-exclamation-octagon-fill" ></i></span><span id="all-exclaim-download" onClick={() => pdfDownload(item)}><i class="bi bi-download" ></i></span></h5>
+       <h5 id="returned-header">{(item.invoiceTitle).toUpperCase()}<span id="all-exclaim-logo"><i class="bi bi-exclamation-octagon-fill" ></i></span>
+       <span id="all-exclaim-download" onClick={() => pdfDownload(item)}>
+       {/* <a href={"https://cdbd-18-212-22-122.ngrok.io/pdf/"+  item.invoiceSentTo + "/" + item.invoiceSentBy + "/" + item._id} download="invoice.pdf"> */}
+       {/* <span id="all-exclaim-download" > */}
+
+         <i class="bi bi-download" ></i></span>
+         {/* </a> */}
+         </h5>
        <p id="returned-business">Business Address: {item.businessAddress}</p>
       {/* city.toUpperCase */}
        <h5 id="returned-header">SUBJECT TO {(item.city)} JURISDICTION</h5>
