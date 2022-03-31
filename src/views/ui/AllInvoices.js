@@ -178,10 +178,10 @@ const AllInvoices = () => {
       <p id="returned-header">{message}</p>
        <h5 id="returned-header">{(item.invoiceTitle).toUpperCase()}
        {/* <div> */}
-       <span id="all-exclaim-logo"onClick={()=>handleShow(item)}><i class="bi bi-exclamation-octagon-fill" ></i></span>
+       <span id="all-exclaim-logo"onClick={()=>handleShow(item)} style={{cursor:"pointer"}}><i class="bi bi-exclamation-octagon-fill" ></i></span>
 
 
-       <span id="all-exclaim-download" onClick={() => pdfDownload(item)}>
+       <span id="all-exclaim-download" onClick={() => pdfDownload(item)} style={{cursor:"pointer"}}>
         
          
        {/* <a href={"https://cdbd-18-212-22-122.ngrok.io/pdf/"+  item.invoiceSentTo + "/" + item.invoiceSentBy + "/" + item._id} download="invoice.pdf"> */}
