@@ -51,7 +51,7 @@ const Returned = () => {
       <Card>
        <h5 id="returned-header">ANDROID DEVELOPER</h5>
        <p id="returned-business">Business Address: {item.businessAddress}</p>
-       <p id="returned-business">GST No: {item.getNumber}</p>
+       <p id="returned-business">GST No: {item.gstNumber}</p>
        <p id="returned-business">Email ID: {item.invoiceSentBy}</p>
        <p id="returned-business">Phone No: {item.businessContactNo}</p>
        <p id="returned-business">Date: {(new Date(item.invoiceTime)).toLocaleDateString()}</p>
@@ -81,15 +81,16 @@ const Returned = () => {
             
          </table>
          </div>
-         <p id="returned-business">Discount:</p>
-         <p id="returned-business">IGST:</p>
-         <p id="returned-business">CGST:</p>
-         <p id="returned-business">UTGST:</p>
-         <p id="returned-business">SGST:</p>
-         <p id="returned-business">Net total:</p>
+         <p id="returned-business">Discount: {item.discount}</p>
+         <p id="returned-business">IGST: {item.invoiceIGST}</p>
+         <p id="returned-business">CGST: {item.invoiceCGST}</p>
+         <p id="returned-business">UTGST: {item.invoiceUTGST}</p>
+         <p id="returned-business">SGST: {item.invoiceSGST}</p>
+         <p id="returned-business">Net total: {item.roundoff}</p>
        
       
-       <p id="returned-business">Payment method:</p>
+       <p id="returned-business">Payment method: {item.invoicePaymentMode}</p>
+       <p id="returned-business">{item.invoiceDescription}</p>
         {/* <div>
           <Button color="light-danger">{data[0]._id}</Button>
         </div> */}
