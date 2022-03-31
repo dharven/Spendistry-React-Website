@@ -46,6 +46,7 @@ const Returned = () => {
   <button type="button" class="btn btn-outline-primary">search</button>
 </div><br />
     <Row>
+      {data.map((item) => (
     <Col md="6" lg="4">
       <Card>
        <h5 id="returned-header">ANDROID DEVELOPER</h5>
@@ -67,36 +68,17 @@ const Returned = () => {
               <th>Price</th>
               <th>Total</th>
             </tr>
-            <tr>
-              <td>maggie</td>
-              <td>5</td>
-              <td>100</td>
-              <td>500</td>
+            {
+              item.invoiceTotalitems.map((item) => (
+<tr>
+              <td>{item.itemName}</td>
+              <td>{item.quantity}</td>
+              <td>{item.price}</td>
+              <td>{item.total}</td>
             </tr>
-            <tr>
-              <td>maggie</td>
-              <td>5</td>
-              <td>100</td>
-              <td>500</td>
-            </tr>
-            <tr>
-              <td>maggie</td>
-              <td>5</td>
-              <td>100</td>
-              <td>500</td>
-            </tr>
-            <tr>
-              <td>maggie</td>
-              <td>5</td>
-              <td>100</td>
-              <td>500</td>
-            </tr>
-            <tr>
-              <td>maggie</td>
-              <td>5</td>
-              <td>100</td>
-              <td>500</td>
-            </tr>
+              ))
+            }
+            
          </table>
          </div>
          <p id="returned-business">Discount:</p>
@@ -114,6 +96,7 @@ const Returned = () => {
       </Card>
       
     </Col>
+      ))}
     
   </Row>
      
