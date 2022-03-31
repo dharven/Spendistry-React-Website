@@ -11,7 +11,7 @@ import axios from 'axios';
 import "../dashboard.css"
 
 
-
+// https://cdbd-18-212-22-122.ngrok.io/invoice/findele/shashank@gmail.com/sha@gmail.com
 
 
 const AllInvoices = () => {
@@ -25,9 +25,10 @@ const AllInvoices = () => {
         var email = localStorage.getItem('email')
       } else {
         var email = sessionStorage.getItem('email')
+        var id = sessionStorage.getItem('id')
       }
       const result = await axios(
-        'https://cdbd-18-212-22-122.ngrok.io/return/useremail/' + email,
+        'https://cdbd-18-212-22-122.ngrok.io/invoice/findEle/' + email + "/" + id,
       );
 
       setData(result.data);
@@ -41,11 +42,7 @@ const AllInvoices = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     const value = e.target.value;
-    data.filter(item => {
-      if (item.invoiceSentTo.toLowerCase().includes(value.toLowerCase())) {
-        console.log(item)
-      }
-    })
+   
   }
 
   return (
@@ -58,7 +55,7 @@ const AllInvoices = () => {
     <Row>
       {data.map((item) => (
     <Col md="6" lg="4">
-      <Card>
+      {/* <Card>
        <h5 id="returned-header">{(item.invoiceTitle).toUpperCase()}</h5>
        <p id="returned-business">Business Address: {item.businessAddress}</p>
        <h5 id="returned-header">SUBJECT TO {(item.city).toUpperCase()} JURISDICTION</h5>
@@ -70,8 +67,6 @@ const AllInvoices = () => {
        <p id="returned-business">client: {item.invoiceSentTo}</p>
        <p id="returned-business">Invoice No: {item.invoiceNumber}</p>
        <div id="returned-x-scroll">
-         {/* <p id="returned-business"><span id="returned-item">Item</span><span id="returned-Qnt">Qnt</span><span id="returned-Price">Price</span><span id="returned-total">Total</span></p> 
-         <p id="returned-item-name">woooooooooooooooooooooooooooooooooo</p><span id="returned-Qnt-name">Qnt</span><span id="returned-Price">Price</span><span id="returned-total">Total</span> */}
          <table id="returned-table">
             <tr>
               <th>Item</th>
@@ -81,7 +76,7 @@ const AllInvoices = () => {
             </tr>
             {
               item.invoiceTotalitems.map((item) => (
-<tr>
+            <tr>
               <td>{item.itemName}</td>
               <td>{item.quantity}</td>
               <td>{item.price}</td>
@@ -98,14 +93,11 @@ const AllInvoices = () => {
          <p id="returned-business"><span >UTGST: {item.invoiceUTGST}</span><span id="returned-igst">SGST: {item.invoiceSGST}</span></p>
          
          <p id="returned-business">Net total: {item.roundoff}</p>
-       
+
       
        <p id="returned-business">Payment method: {item.invoicePaymentMode}</p>
        <p id="returned-header">{item.invoiceDescription}</p>
-        {/* <div>
-          <Button color="light-danger">{data[0]._id}</Button>
-        </div> */}
-      </Card>
+      </Card> */}
       
     </Col>
       ))}
