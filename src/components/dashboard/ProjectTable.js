@@ -32,8 +32,10 @@ const ProjectTables = () => {
   const onInvoiceClick = (e, index) => {
     // e.preventDefault();
     console.log(index, data[index]._id)
-    sessionStorage.setItem('id', data[index]._id)
+    if(data[index]._id !== "No data found"){
+      sessionStorage.setItem('id', data[index]._id)      
     setIndex(index);
+    }
      
   }
 
