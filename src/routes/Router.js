@@ -57,11 +57,11 @@ const ThemeRoutes = [
     ],
   },
   {
-    path: "",
+    path: "*",
     element: <Pagenotfound />,
-    children: [
-      { path: "/Pagenotfound", element: <Navigate to="/Pagenotfound" /> },
-    ],
+    // children: [
+    //   { path: "/Pagenotfound", element: <Navigate to="/Pagenotfound" /> },
+    // ],
   },
   {
     path: "",
