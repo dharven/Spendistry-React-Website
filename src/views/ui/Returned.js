@@ -18,6 +18,7 @@ const Returned = () => {
 
 
   const [data, setData] = useState([]);
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,11 +42,7 @@ const Returned = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     const value = e.target.value;
-    data.filter(item => {
-      if (item.invoiceSentTo.toLowerCase().includes(value.toLowerCase())) {
-        console.log(item)
-      }
-    })
+    setSearch(value);
   }
 
   return (
@@ -53,10 +50,19 @@ const Returned = () => {
     <div>
      <div class="input-group">
   <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" onChange={handleSearch} />
-  <button type="button" class="btn btn-outline-primary">search</button>
 </div><br />
     <Row>
-      {data.map((item) => (
+      {data.filter((item)=>{
+        if(search === ''){
+          return data;
+        } else if((item.invoiceTitle).toLowerCase().includes((search).toLowerCase())){
+          return item;
+        } else if((item.invoiceSentBy).toLowerCase().includes((search).toLowerCase())){
+          return item;
+        } else if (item.invoiceNumber == parseInt(search) ){
+          return item;
+        }
+      }).map((item) => (
     <Col md="6" lg="4">
       <Card>
        <h5 id="returned-header">{(item.invoiceTitle).toUpperCase()}</h5>
