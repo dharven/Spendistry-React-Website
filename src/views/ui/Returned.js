@@ -50,14 +50,14 @@ const Returned = () => {
     <Col md="6" lg="4">
       <Card>
        <h5 id="returned-header">ANDROID DEVELOPER</h5>
-       <p id="returned-business">Business Address:</p>
-       <p id="returned-business">GST No:</p>
-       <p id="returned-business">Email ID:</p>
-       <p id="returned-business">Phone No:</p>
-       <p id="returned-business">Date:</p>
-       <p id="returned-business">Time:</p>
-       <p id="returned-business">Email ID:</p>
-       <p id="returned-business">Invoice No:</p>
+       <p id="returned-business">Business Address: {item.businessAddress}</p>
+       <p id="returned-business">GST No: {item.getNumber}</p>
+       <p id="returned-business">Email ID: {item.invoiceSentBy}</p>
+       <p id="returned-business">Phone No: {item.businessContactNo}</p>
+       <p id="returned-business">Date: {(new Date(item.invoiceTime)).toLocaleDateString()}</p>
+       <p id="returned-business">Time: {(new Date(item.invoiceTime)).toLocaleTimeString()}</p>
+       <p id="returned-business">client: {item.invoiceSentTo}</p>
+       <p id="returned-business">Invoice No: {item.invoiceNumber}</p>
        <div id="returned-x-scroll">
          {/* <p id="returned-business"><span id="returned-item">Item</span><span id="returned-Qnt">Qnt</span><span id="returned-Price">Price</span><span id="returned-total">Total</span></p> 
          <p id="returned-item-name">woooooooooooooooooooooooooooooooooo</p><span id="returned-Qnt-name">Qnt</span><span id="returned-Price">Price</span><span id="returned-total">Total</span> */}
