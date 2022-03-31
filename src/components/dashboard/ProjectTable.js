@@ -7,6 +7,7 @@ import { Navigate , Link } from 'react-router-dom';
 const ProjectTables = () => {
   const [data, setData] = useState([{MonthlyTotal:"", AllTotal:""}]);
   const [index, setIndex] = useState(null);
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,14 +41,19 @@ const ProjectTables = () => {
     return <Navigate  to='/Edit' />
   }
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const value = e.target.value;
+    setSearch(value);
+  }
+
   return (
     <div>
       <Card>
         <CardBody>
           <CardTitle tag="h5">Recent Bills</CardTitle><br />
           <div class="input-group">
-  <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-  <button type="button" class="btn btn-outline-primary">search</button>
+  <input type="search" id="search" onChange={handleSearch} class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
 </div><br />
           
           <div id='table-scroll'>
@@ -62,8 +68,13 @@ const ProjectTables = () => {
               </tr>
             </thead>
             <tbody>
-              {data.map((tdata, index) => (
-             
+              {data.filter((item)=>{
+                if(search === ''){
+                  return data;
+                } else if((item._id).toLowerCase().includes((search).toLowerCase())){
+                  return item;
+                }
+              }).map((tdata, index) => (
                 <tr key={index} 
                 //send data to new page with row click
                 onClick={() => onInvoiceClick(tdata, index)}
@@ -92,8 +103,8 @@ const ProjectTables = () => {
                   <td>₹{tdata.AllTotal}</td>
                   
                 </tr>
-               
               ))}
+          
             </tbody>
           </Table>
           </div>
