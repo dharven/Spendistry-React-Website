@@ -23,6 +23,8 @@ const EditProfile = lazy(() => import("../views/ui/EditProfile.js"));
 const Reported = lazy(() => import("../views/ui/Reported.js"));
 const Returned = lazy(() => import("../views/ui/Returned.js"));
 const AllInvoices = lazy(() => import("../views/ui/AllInvoices.js"));
+const QRshare = lazy(() => import("../views/ui/QRshare.js"));
+const Pagenotfound = lazy(() => import("../views/ui/Pagenotfound.js"));
 /*****Routes******/
 
 const ThemeRoutes = [
@@ -52,6 +54,20 @@ const ThemeRoutes = [
     element: <Otp />,
     children: [
       { path: "/Otp", element: <Navigate to="/Otp" /> },
+    ],
+  },
+  {
+    path: "",
+    element: <Pagenotfound />,
+    children: [
+      { path: "/Pagenotfound", element: <Navigate to="/Pagenotfound" /> },
+    ],
+  },
+  {
+    path: "",
+    element: <QRshare />,
+    children: [
+      { path: "/QRshare", element: <Navigate to="/QRshare" /> },
     ],
   },
   {

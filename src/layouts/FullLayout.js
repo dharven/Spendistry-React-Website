@@ -4,6 +4,7 @@ import Header from "./Header";
 import { Container } from "reactstrap";
 import React, {useState,useEffect} from 'react'
 import axios from 'axios';
+import "./loader/Loader"
 
 // export const AuthContext = React.createContext();
 const FullLayout = () => {
@@ -83,7 +84,8 @@ const FullLayout = () => {
         } else {
           return (
             <div>
-              <h1>loading</h1>
+              <h3>Loading</h3>
+            {/* <Loader /> */}
             </div>
           )
         }
