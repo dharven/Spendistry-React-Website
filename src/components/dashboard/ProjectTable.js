@@ -38,7 +38,7 @@ const ProjectTables = () => {
   }
 
   if(index !== null){
-    return <Navigate  to='/Edit' />
+    return <Navigate  to='/AllInvoices' />
   }
 
   const handleSearch = (e) => {
