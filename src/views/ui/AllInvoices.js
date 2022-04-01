@@ -21,6 +21,7 @@ const AllInvoices = () => {
   const [search, setSearch] = useState('');
   // const [message, setMessage] = useState('');
   const [item, setItem] = useState({});
+  const [height, setheight] = useState(null)
 
   //modal
   // const [open, setOpen] = useState(false);
@@ -66,10 +67,14 @@ const AllInvoices = () => {
     
   }
 
+  const handleCross = () => setShow(false);
+  
+
 
 
   useEffect(() => {
     console.log("height",window.innerWidth)
+    setheight(window.innerHeight)
     document.body.style.overflow = 'hidden';
     if(sessionStorage.getItem('id') !== null){
     var fetchData = async () => {
@@ -165,7 +170,7 @@ const AllInvoices = () => {
     return (
     
     <div>
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleCross}>
         <Modal.Header closeButton>
           <Modal.Title>Reason for reporting</Modal.Title>
         </Modal.Header>
@@ -186,7 +191,7 @@ const AllInvoices = () => {
     {(() => {
         if (window.innerWidth < 768) {
           return (
-            <div style={{overflowY:"scroll" ,overflowX:"clip", height:window.innerHeight-170}}>
+            <div style={{overflowY:"scroll" ,overflowX:"clip", height:height-170}}>
                 <Row style={{marginBottom:"50"}}>
     
     {data.filter((item)=>{
@@ -278,7 +283,7 @@ const AllInvoices = () => {
           )
         } else {
           return (
-            <div style={{overflowY:"scroll" ,overflowX:"clip", height:window.innerHeight-150}}>
+            <div style={{overflowY:"scroll" ,overflowX:"clip", height:height-150}}>
                 <Row style={{marginBottom:"50"}}>
     
     {data.filter((item)=>{
