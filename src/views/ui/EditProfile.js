@@ -19,6 +19,7 @@ function EditProfile(props) {
     const [ address, setaddress] = useState("")
     const [show, setShow] = useState("")
     const [confimation, setconfimation] = useState(null)
+    const [height, setheight] = useState(null)
     
     useEffect(() => {
         if (localStorage.getItem('email') !== null ) {
@@ -67,6 +68,7 @@ function EditProfile(props) {
           const [img, setImg] = useState();
                     useEffect(() => {
                         document.body.style.overflow = 'hidden';
+                        setheight(window.innerHeight)
                         if (localStorage.getItem('email') !== null ) {
                             var email = localStorage.getItem('email')
                           } else {
@@ -147,7 +149,7 @@ function EditProfile(props) {
             {(() => {
         if (window.innerWidth < 768) {
           return (
-            <div style={{overflowY:"scroll" ,overflowX:"auto", height:window.innerHeight-150}}>
+            <div style={{overflowY:"scroll" ,overflowX:"auto", height:height-150}}>
                  <div className="App">
         <div className="outer">
         <div className="inner">
@@ -240,7 +242,7 @@ function EditProfile(props) {
           )
         } else {
           return (
-            <div style={{overflowY:"scroll" ,overflowX:"auto", height:window.innerHeight-100}}>   
+            <div style={{overflowY:"scroll" ,overflowX:"auto", height:height-100}}>   
              <div className="App">
         <div className="outer">
         <div className="inner">

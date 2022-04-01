@@ -19,9 +19,12 @@ const Returned = () => {
 
   const [data, setData] = useState([]);
   const [search, setSearch] = useState('');
+  const [height, setheight] = useState(null)
 
   useEffect(() => {
     const fetchData = async () => {
+      setheight(window.innerHeight)
+
       if (localStorage.getItem('email') !== null ) {
         var email = localStorage.getItem('email')
       } else {
@@ -62,7 +65,7 @@ const Returned = () => {
 {(() => {
         if (window.innerWidth < 768) {
           return (
-            <div style={{overflowY:"scroll" ,overflowX:"clip", height:window.innerHeight-170}}>
+            <div style={{overflowY:"scroll" ,overflowX:"clip", height:height-170}}>
                <Row>
       {data.filter((item)=>{
         if(search === ''){
@@ -135,7 +138,7 @@ const Returned = () => {
           )
         } else {
           return (
-            <div style={{overflowY:"scroll" ,overflowX:"clip", height:window.innerHeight-150}}> 
+            <div style={{overflowY:"scroll" ,overflowX:"clip", height:height-150}}> 
              <Row>
       {data.filter((item)=>{
         if(search === ''){

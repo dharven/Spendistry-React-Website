@@ -19,9 +19,13 @@ const Starter = () => {
   const [data, setData] = useState([{MonthlyTotalAll:"", AllTimeTotal:"", qr:""}]);
   const [qr, setQr] = useState('');
   const [notify, setNotify] = useState('');
+  const [height, setheight] = useState(null)
+
 
   useEffect(() => {
     //dissable scroll
+    setheight(window.innerHeight)
+
     document.body.style.overflow = "hidden";
     const fetchData = async () => {
       sessionStorage.removeItem('id');
@@ -65,7 +69,7 @@ const Starter = () => {
     {(() => {
         if (window.innerWidth < 768) {
           return (
-            <div style={{overflowY:"scroll" ,overflowX:"clip", height:window.innerHeight-170}}>
+            <div style={{overflowY:"scroll" ,overflowX:"clip", height:height-170}}>
               <Row>
     <Col md="6" lg="4">
       <Card body className="text-center">
@@ -118,7 +122,7 @@ const Starter = () => {
           )
         } else {
           return (
-            <div style={{overflowY:"scroll" ,overflowX:"clip", height:window.innerHeight-150}}>    
+            <div style={{overflowY:"scroll" ,overflowX:"clip", height:height-150}}>    
             <Row>
     <Col md="6" lg="4">
       <Card body className="text-center">
