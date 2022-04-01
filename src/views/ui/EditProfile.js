@@ -1,5 +1,11 @@
 import React, { Component, Fragment, useState, useEffect } from "react";
 import axios from "axios";
+import {
+    Card,
+    CardText,
+    CardTitle, 
+    Button,
+  } from "reactstrap";
 
 import "./login.index.css";
 import { Link , Navigate } from 'react-router-dom';
@@ -22,13 +28,13 @@ function EditProfile(props) {
           }
 
         const handlegetdata = async () => {
-            const { data} = await axios.get("https://cdbd-18-212-22-122.ngrok.io/user/"+email)
+            const { data} = await axios.get( process.env.REACT_APP_SPENDISTRY_API+"user/"+email)
             setfname(data.fname)
             setlname(data.lname)
             setemails(email)
             setmobileNumber(data.mobileNumber)
             setaddress(data.address)
-            console.log(data, data.fname, "https://cdbd-18-212-22-122.ngrok.io/user/"+email)
+            console.log(data, data.fname,  process.env.REACT_APP_SPENDISTRY_API+"user/"+email)
           }
           handlegetdata()
         },[])
@@ -48,21 +54,26 @@ function EditProfile(props) {
               'Content-Type': 'Application/Json',
               'Accept': 'Application/Json'
               }
-            const { data} = await axios.patch(`https://cdbd-18-212-22-122.ngrok.io/user/${emails}`, patchdata)
+            const { data} = await axios.patch( process.env.REACT_APP_SPENDISTRY_API+`user/${emails}`, patchdata)
             console.log(patchdata)
-            alert("Profile Edited Successfully")
+            setconfimation("Profile Updated")
+            //set Timeout
+            setTimeout(() => {
+                setconfimation(null)
+            }, 2500);
           }
 
           // for image get 
           const [img, setImg] = useState();
                     useEffect(() => {
+                        document.body.style.overflow = 'hidden';
                         if (localStorage.getItem('email') !== null ) {
                             var email = localStorage.getItem('email')
                           } else {
                             var email = sessionStorage.getItem('email')
                           }
                         const fetchImage = async () => {
-                            const res = await fetch(`https://cdbd-18-212-22-122.ngrok.io/userProfile/${email}.jpeg`);
+                            const res = await fetch( process.env.REACT_APP_SPENDISTRY_API+`userProfile/${email}.jpeg`);
                             if(res.status == 404){
                                 setImg(`https://i.ibb.co/pKg43FF/no-dp.jpg`)
                             } else {
@@ -82,13 +93,11 @@ function EditProfile(props) {
             setSelectedFile(event.target.files);
             setisSelected(true);
             setconfimation(null)
-            document.getElementById("pro-pic").src = URL.createObjectURL(event.target.files[0]);
-        };
-    
-        const handleSubmission = () => {
+            var file = event.target.files[0];
+            document.getElementById("pro-pic").src = URL.createObjectURL(file);
             const formData = new FormData();
-            if(selectedFile){
-            formData.append('userProfile', selectedFile[0]);
+            if(file){
+            formData.append('userProfile', file);
             
             // const headers = {
             //     'Content-Type': 'Application/Json',
@@ -96,7 +105,7 @@ function EditProfile(props) {
             //     }
     
             fetch(
-                `https://cdbd-18-212-22-122.ngrok.io/user/uploadImage/${emails}`,
+                process.env.REACT_APP_SPENDISTRY_API+`user/uploadImage/${emails}`,
                 {
                     method: 'POST',
                     body: formData,
@@ -119,6 +128,13 @@ function EditProfile(props) {
             } else {
                 setconfimation("Select a file first!")
             }
+            setTimeout(() => {
+                setconfimation(null)
+            }, 2500);
+        };
+    
+        const handleSubmission = () => {
+            
         };
 
             // const refreshPage = setTimeout(() => {
@@ -128,7 +144,8 @@ function EditProfile(props) {
           
     return (
         <Fragment>
-       <div className="App">
+             <div style={{overflowY:"scroll" ,overflowX:"auto", height:window.innerHeight-100}}>
+                      <div className="App">
         <div className="outer">
         <div className="inner">
             {/* image */}
@@ -166,7 +183,7 @@ function EditProfile(props) {
 
         <div id="edit-profile-submit-field"> 
         
-				<button onClick={() => { handleSubmission();}} id="edit-submit-btn">Submit</button>
+				{/* <button onClick={() => { handleSubmission();}} id="edit-submit-btn">Submit</button> */}
 			</div>
             </div>
         <form onSubmit={handleSubmit} >
@@ -215,6 +232,9 @@ function EditProfile(props) {
         </form>
         </div>
         </div>
+        </div>
+        
+
         </div>
         </Fragment>
     );

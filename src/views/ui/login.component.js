@@ -26,7 +26,7 @@ const LogIn = () => {
         e.preventDefault();
          const {email, password} = e.target.elements;
         axios.post(
-            "https://cdbd-18-212-22-122.ngrok.io/auth/userLogin",
+            process.env.REACT_APP_SPENDISTRY_API+"auth/userLogin",
 {
                 _id: email.value, 
                 password: password.value

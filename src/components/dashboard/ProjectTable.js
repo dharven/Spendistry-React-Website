@@ -18,7 +18,7 @@ const ProjectTables = () => {
       }
       const result = await axios(
         
-        'https://cdbd-18-212-22-122.ngrok.io/invoice/total/'+ email,
+        process.env.REACT_APP_SPENDISTRY_API+'invoice/total/'+ email,
       );
 
       setData(result.data);
@@ -50,8 +50,8 @@ const ProjectTables = () => {
   }
 
   return (
-    <div>
-      <Card>
+    <div >
+      <Card >
         <CardBody>
           <CardTitle tag="h5">Recent Bills</CardTitle><br />
           <div class="input-group">
@@ -86,7 +86,7 @@ const ProjectTables = () => {
                   <td>
                     <div className="d-flex align-items-center p-2">
                       <img
-                        src={"https://cdbd-18-212-22-122.ngrok.io/vendorProfile/"+tdata._id+".jpeg"}
+                        src={ process.env.REACT_APP_SPENDISTRY_API+"vendorProfile/"+tdata._id+".jpeg"}
                         className="rounded-circle"
                         onError={(e) => {
                           e.target.onerror = null;

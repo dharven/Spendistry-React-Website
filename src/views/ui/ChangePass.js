@@ -17,7 +17,7 @@ e.preventDefault();
     password:document.getElementById('password').value,
    };
  axios
-   .patch(`https://cdbd-18-212-22-122.ngrok.io/auth/b4xabhishek@gmail.com`, data)
+   .patch( process.env.REACT_APP_SPENDISTRY_API+`auth/b4xabhishek@gmail.com`, data)
    .then(res => console.log(res))
    .then(() => {setMessage('PASSWORD CHANGED!')
 setGoToLogin(true)

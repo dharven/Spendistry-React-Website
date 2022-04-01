@@ -18,12 +18,12 @@ const SignIn = () => {
     },[])
     const submit = (e) =>{
         e.preventDefault();
-        axios.post("https://cdbd-18-212-22-122.ngrok.io/auth",{
+        axios.post( process.env.REACT_APP_SPENDISTRY_API+"auth",{
             _id: document.getElementById("email").value, 
             password: document.getElementById("password").value
         }).then((response)=>{
             axios.post(
-                "https://cdbd-18-212-22-122.ngrok.io/user",
+                process.env.REACT_APP_SPENDISTRY_API+"user",
                     {
                     "_id": document.getElementById("email").value,
                     "fname": document.getElementById("fname").value,
@@ -35,7 +35,7 @@ const SignIn = () => {
                   })
               .then((respose) => {
                   
-                  axios.post("https://cdbd-18-212-22-122.ngrok.io/invoice",
+                  axios.post( process.env.REACT_APP_SPENDISTRY_API+"invoice",
                   {
                   _id: document.getElementById("email").value
                 })

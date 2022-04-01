@@ -1,10 +1,16 @@
 body{
-    background-color: #E7F5F8;
+    background-color: #d8eef4;
     
 }
 img{
 	object-fit: cover;
 }
+
+::-webkit-scrollbar {
+    width: 0px;
+    height:0.2%; 
+    }
+
 #name-reported{
     padding-left: 4%;
     padding-top: 2%;

@@ -21,6 +21,8 @@ const Starter = () => {
   const [notify, setNotify] = useState('');
 
   useEffect(() => {
+    //dissable scroll
+    document.body.style.overflow = "hidden";
     const fetchData = async () => {
       sessionStorage.removeItem('id');
       if (localStorage.getItem('email') !== null ) {
@@ -29,7 +31,7 @@ const Starter = () => {
         var email = sessionStorage.getItem('email')
       }
       const result = await axios(
-        'https://cdbd-18-212-22-122.ngrok.io/invoice/total/' + email,
+        process.env.REACT_APP_SPENDISTRY_API+'invoice/total/' + email,
       );
 
       setData(result.data);
@@ -60,8 +62,11 @@ const Starter = () => {
   return (
     
     <div>
-     
-    <Row>
+    {(() => {
+        if (window.innerWidth < 768) {
+          return (
+            <div style={{overflowY:"scroll" ,overflowX:"clip", height:window.innerHeight-170}}>
+              <Row>
     <Col md="6" lg="4">
       <Card body className="text-center">
         <CardTitle tag="h5">Monthly Expenses</CardTitle>
@@ -99,14 +104,76 @@ const Starter = () => {
     </Col>
    
   </Row>
-     
+ 
       {/***Table ***/}
+     
       <Row>
+      
         <Col lg="12">
           <ProjectTables />
         </Col>
+        
       </Row>
+            </div>
+          )
+        } else {
+          return (
+            <div style={{overflowY:"scroll" ,overflowX:"clip", height:window.innerHeight-150}}>    
+            <Row>
+    <Col md="6" lg="4">
+      <Card body className="text-center">
+        <CardTitle tag="h5">Monthly Expenses</CardTitle>
+        <CardText>
+       <h3>₹{data[0].MonthlyTotalAll}</h3> 
+        </CardText>
+        {/* <div>
+          <Button color="light-danger">{data[0]._id}</Button>
+        </div> */}
+      </Card>
+    </Col>
+    <Col md="6" lg="4">
+      <Card body className="text-center">
+        <CardTitle tag="h5">Total Expenses</CardTitle>
+        <CardText>
+        <h3>₹{data[0].AllTimeTotal}</h3>
+        </CardText>
+        {/* <div>
+          <Button color="light-danger">{data[0]._id}</Button>
+        </div> */}
+      </Card>
+    </Col>
+    
+    <Col md="6" lg="4">
+      <Card body className="text-center">
+        <CardTitle tag="h5">Your QR Code</CardTitle>
+        <CardText>
+        <QRCode value={data[0].qr} size={100}/>
+        </CardText>
+        <div>
+          <Button onClick={handleShare} color="white"><i class="bi bi-share" ></i></Button>
+          <p id="notify">{notify}</p>
+        </div>
+      </Card>
+    </Col>
+   
+  </Row>
+ 
+      {/***Table ***/}
      
+      <Row>
+      
+        <Col lg="12">
+          <ProjectTables />
+        </Col>
+        
+      </Row>    
+            </div>
+          )
+        }
+      })()}
+    
+      
+       
      
     </div>
   );

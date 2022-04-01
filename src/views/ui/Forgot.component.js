@@ -43,7 +43,7 @@ class Forgot extends Component {
           email: this.state.email,
         };
         axios
-          .post("https://cdbd-18-212-22-122.ngrok.io/otp/forgotpassword", data)
+          .post( process.env.REACT_APP_SPENDISTRY_API+"otp/forgotpassword", data)
           // .then(res => console.log(res))
           .then(res => this.setState({err: res.data})) 
           .then(() => {this.setState({show: true})
@@ -59,7 +59,7 @@ class Forgot extends Component {
           otp: this.state.otp,
         };
         axios
-          .post("https://cdbd-18-212-22-122.ngrok.io/otp/verifyOtp", data)
+          .post( process.env.REACT_APP_SPENDISTRY_API+"otp/verifyOtp", data)
           .then(res => console.log(res))
           .then(res => this.setState({otp: res})) 
           .then(() => {this.setState({redirect: true, err1:null})
@@ -75,7 +75,7 @@ class Forgot extends Component {
           password: this.state.password,
         };
         axios
-          .post(`https://cdbd-18-212-22-122.ngrok.io/auth/${this.state.email}`, data)
+          .post( process.env.REACT_APP_SPENDISTRY_API+`auth/${this.state.email}`, data)
           .then(res => console.log(res))
           .then(res => this.setState({otp: res})) 
           .then(() => this.setState({redirect: true})) 
@@ -94,7 +94,7 @@ class Forgot extends Component {
           email: this.state.email,
         };
         axios
-          .post("https://cdbd-18-212-22-122.ngrok.io/otp/forgotpassword", data)
+          .post( process.env.REACT_APP_SPENDISTRY_API+"otp/forgotpassword", data)
           .then(res => this.setState({err: res.data}))
           .then(() => this.setState({show: true}))
           .catch(err =>

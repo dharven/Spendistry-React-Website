@@ -21,7 +21,7 @@ const Otp = () => {
               // make axios post request
               const response = await axios({
                 method: "post",
-                url: "https://cdbd-18-212-22-122.ngrok.io/otp/verifyOtp",
+                url:  process.env.REACT_APP_SPENDISTRY_API+"otp/verifyOtp",
                 data: loginFormData,
                 headers: { "Content-Type": "multipart/form-data" },
               });

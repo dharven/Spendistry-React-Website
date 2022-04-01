@@ -65,10 +65,16 @@ if (localStorage.getItem('email') !== null || localStorage.getItem('Jwt') !== nu
   const remove = (e) => {
     e.preventDefault();
     // console.log("e",e.target.innerHTML)
-    sessionStorage.removeItem("id")
+    
     // console.log(navigation[1].title)
     if(e.target.innerHTML.match(navigation[1].title)){
-    setReload(true)
+      
+      if(sessionStorage.getItem('id')){
+        sessionStorage.removeItem("id")
+        setReload(true)
+      }
+    
+      
     // console.log("inside if")
     } else {
       setReload(false)
@@ -77,8 +83,8 @@ if (localStorage.getItem('email') !== null || localStorage.getItem('Jwt') !== nu
   }
 
   if(reload){
-    window.location.reload()
-    // console.log("reload", reload)
+    // console.log("reload")
+      window.location.reload()
   }
 
   return (
