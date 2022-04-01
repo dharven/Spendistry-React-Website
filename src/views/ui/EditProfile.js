@@ -67,7 +67,7 @@ function EditProfile(props) {
           // for image get 
           const [img, setImg] = useState();
                     useEffect(() => {
-                        document.body.style.overflow = 'hidden';
+                        document.body.style.overflow = 'scroll';
                         setheight(window.innerHeight)
                         if (localStorage.getItem('email') !== null ) {
                             var email = localStorage.getItem('email')
@@ -145,13 +145,11 @@ function EditProfile(props) {
 
           
     return (
-        <Fragment>
-            {(() => {
-        if (window.innerWidth < 768) {
-          return (
-            <div style={{overflowY:"scroll" ,overflowX:"auto", height:height-150}}>
+        <Fragment >
+ 
+            {/* <div style={{overflowY:"scroll" ,overflowX:"auto", height:height-150}} > */}
                  <div className="App">
-        <div className="outer">
+        <div className="outer" >
         <div className="inner">
             {/* image */}
        
@@ -238,103 +236,8 @@ function EditProfile(props) {
         </div>
         </div>
         </div>
-            </div>
-          )
-        } else {
-          return (
-            <div style={{overflowY:"scroll" ,overflowX:"auto", height:height-100}}>   
-             <div className="App">
-        <div className="outer">
-        <div className="inner">
-            {/* image */}
+            {/* </div> */}
        
-			{/* {isSelected ? (
-				<div>
-					<p>Filename: {selectedFile.name}</p>
-					<p>Filetype: {selectedFile.type}</p>
-					<p>Size in bytes: {selectedFile.size}</p>
-					<p>
-						lastModifiedDate:{' '}
-						{selectedFile.lastModifiedDate.toLocaleDateString()}
-					</p>
-				</div>
-			) : (
-				<p>Select a file to show details</p>
-			)} */}
-			
-{/* Form */}
-        {/* <div className="form-group">
-         <label>Password</label>
-                <Link to ="/Forgot"> <button>Change Password</button></Link>
-            </div> */}
-             <h3>Edit Profile</h3>
-            <div id="edit-profile-pic">
-            <img src={img} alt="Image" className="image" id="pro-pic" width="50" height="50"/>
-            
-            </div>
-            <div id="edit-profile-input-field">
-        <input type="file"  name="userProfile" onChange={changeHandler} accept="image/*" id="file-pic"/>
-        </div>
-        <div className="form-group">
-        <p id="confirmation">{confimation}</p>
-                
-
-        <div id="edit-profile-submit-field"> 
-        
-				{/* <button onClick={() => { handleSubmission();}} id="edit-submit-btn">Submit</button> */}
-			</div>
-            </div>
-        <form onSubmit={handleSubmit} >
-           
-            
-            <div className="form-group">
-                <label>Email</label>
-                <input disabled value={emails} type="email" id="email" className="form-control"
-                placeholder="Enter email" />
-            </div>
-            <div className="form-group">
-                <label>First name</label>
-                <input value={fname} type="text" id="fname" className="form-control"
-                onChange={(e) => {setfname(e.target.value)}}
-                placeholder="First name" />
-            </div>
-
-            <div className="form-group">
-                <label>Last name</label>
-                <input value={lname} type="text" id="lname" className="form-control"
-                onChange={(e) => {setlname(e.target.value)}}
-                placeholder="Last name" />
-            </div>
-
-           
-
-            <div className="form-group">
-                <label>Mobile Number</label>
-                <input value={mobileNumber} type="tel" id="mobileNumber" className="form-control"
-                onChange={(e) => {setmobileNumber(e.target.value)}}
-                placeholder="Mobile Number" />
-            </div>
-            
-            <div className="form-group">
-                <label>Address</label>
-                <input value={address} type="text" id="address" className="form-control"
-                onChange={(e) => {setaddress(e.target.value)}}
-                placeholder="Address" />
-            </div>
-
-
-            <button type="submit" id="Sign-btn" className="btn btn-dark btn-lg btn-block">Save</button>
-            {/* <p className="forgot-password text-right">
-                Already registered? <Link to={"/sign-in"}> <span id="Account-Sign-up"> log in! </span></Link>
-            </p> */}
-        </form>
-        </div>
-        </div>
-        </div>     
-            </div>
-          )
-        }
-      })()}
                      
         
 

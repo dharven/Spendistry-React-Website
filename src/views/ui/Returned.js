@@ -24,7 +24,7 @@ const Returned = () => {
   useEffect(() => {
     const fetchData = async () => {
       setheight(window.innerHeight)
-
+      document.body.style.overflow = 'hidden';
       if (localStorage.getItem('email') !== null ) {
         var email = localStorage.getItem('email')
       } else {
