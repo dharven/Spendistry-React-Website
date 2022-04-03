@@ -25,7 +25,10 @@ const Starter = () => {
   useEffect(() => {
     //dissable scroll
     setheight(window.innerHeight)
-
+    document.getElementsByClassName("text-center")[0].style.cssText = "background: #00B4D8;";
+    document.getElementsByClassName("text-center")[1].style.cssText = "background: #00B4D8;";
+    document.getElementsByClassName("text-center")[2].style.cssText = "background: #00B4D8;";
+    console.log(document.getElementsByTagName("h5"))
     document.body.style.overflow = "hidden";
     const fetchData = async () => {
       sessionStorage.removeItem('id');
@@ -72,21 +75,24 @@ const Starter = () => {
             <div style={{overflowY:"scroll" ,overflowX:"clip", height:height-170}}>
               <Row>
     <Col md="6" lg="4">
-      <Card body className="text-center">
-        <CardTitle tag="h5">Monthly Expenses</CardTitle>
+    
+      <Card body className="text-center" id="cardM" >
+        <CardTitle tag="h5" style={{color:"#03045E"}}>Monthly Expenses</CardTitle>
         <CardText>
-       <h3>₹{data[0].MonthlyTotalAll}</h3> 
+       <h3  style={{color:"#E7F5F8"}}>₹{data[0].MonthlyTotalAll}</h3> 
         </CardText>
         {/* <div>
           <Button color="light-danger">{data[0]._id}</Button>
         </div> */}
+      
       </Card>
+      
     </Col>
     <Col md="6" lg="4">
       <Card body className="text-center">
-        <CardTitle tag="h5">Total Expenses</CardTitle>
+        <CardTitle tag="h5" style={{color:"#03045E"}}>Total Expenses</CardTitle>
         <CardText>
-        <h3>₹{data[0].AllTimeTotal}</h3>
+        <h3  style={{color:"#E7F5F8"}}>₹{data[0].AllTimeTotal}</h3>
         </CardText>
         {/* <div>
           <Button color="light-danger">{data[0]._id}</Button>
@@ -96,9 +102,9 @@ const Starter = () => {
     
     <Col md="6" lg="4">
       <Card body className="text-center">
-        <CardTitle tag="h5">Your QR Code</CardTitle>
+        <CardTitle tag="h5" style={{color:"#03045E"}}>Your QR Code</CardTitle>
         <CardText>
-        <QRCode value={data[0].qr} size={100}/>
+        <QRCode value={data[0].qr}  bgColor="#00B4D8" fgColor="#000000" size={100}/>
         </CardText>
         <div>
           <Button onClick={handleShare} color="white"><i class="bi bi-share" ></i></Button>
@@ -122,13 +128,14 @@ const Starter = () => {
           )
         } else {
           return (
-            <div style={{overflowY:"scroll" ,overflowX:"clip", height:height-150}}>    
+            // style={{overflowY:"scroll" ,overflowX:"clip", height:height-150}}
+            <div >    
             <Row>
     <Col md="6" lg="4">
       <Card body className="text-center">
-        <CardTitle tag="h5">Monthly Expenses</CardTitle>
+        <CardTitle tag="h5" style={{color:"#03045E"}}>Monthly Expenses</CardTitle>
         <CardText>
-       <h3>₹{data[0].MonthlyTotalAll}</h3> 
+       <h3  style={{color:"#E7F5F8"}}>₹{data[0].MonthlyTotalAll}</h3> 
         </CardText>
         {/* <div>
           <Button color="light-danger">{data[0]._id}</Button>
@@ -137,9 +144,9 @@ const Starter = () => {
     </Col>
     <Col md="6" lg="4">
       <Card body className="text-center">
-        <CardTitle tag="h5">Total Expenses</CardTitle>
+        <CardTitle tag="h5" style={{color:"#03045E"}}>Total Expenses</CardTitle>
         <CardText>
-        <h3>₹{data[0].AllTimeTotal}</h3>
+        <h3  style={{color:"#E7F5F8"}}>₹{data[0].AllTimeTotal}</h3>
         </CardText>
         {/* <div>
           <Button color="light-danger">{data[0]._id}</Button>
@@ -149,9 +156,9 @@ const Starter = () => {
     
     <Col md="6" lg="4">
       <Card body className="text-center">
-        <CardTitle tag="h5">Your QR Code</CardTitle>
+        <CardTitle tag="h5" style={{color:"#03045E"}}>Your QR Code</CardTitle>
         <CardText>
-        <QRCode value={data[0].qr} size={100}/>
+        <QRCode value={data[0].qr} bgColor="#00B4D8" fgColor="#000000" size={100}/>
         </CardText>
         <div>
           <Button onClick={handleShare} color="white"><i class="bi bi-share" ></i></Button>

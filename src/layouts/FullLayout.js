@@ -59,17 +59,17 @@ const FullLayout = () => {
 
 
   return (
-   <div>
+   <div >
       {/********header**********/}
 
       {(() => {
         if (!loggedInVerify) {
           return (
             <main>
-            <Header />
+            {/* <Header /> */}
       <div className="pageWrapper d-lg-flex">
         {/********Sidebar**********/}
-        <div className="sidebarArea shadow" id="sidebarArea">
+        <div className="sidebarArea shadow" id="sidebarArea"  style={{background:"#03045E", borderTopRightRadius: "25px", borderBottomRightRadius:"25px"}}>
           <Sidebar />
         </div>
         {/********Content Area**********/}

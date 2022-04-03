@@ -88,7 +88,7 @@ if (localStorage.getItem('email') !== null || localStorage.getItem('Jwt') !== nu
   }
 
   return (
-    <div className="bg-dark">
+    <div style={{background:"#03045E", borderRadius:"25px"}} >
       <div className="menuButton">
         <Button
           color="red"
@@ -100,8 +100,12 @@ if (localStorage.getItem('email') !== null || localStorage.getItem('Jwt') !== nu
       </div>
 
       {show === true ? 
-      <div className="p-3 mt-2">
-        <><Nav vertical className="sidebarNav">
+      
+      <div className="p-3 mt-2" >
+        <div>
+          <p style={{fontSize: '21px', textAlign: "center", paddingTop: '10px'}}> <span style={{color: "orange"}}>Spe</span><span style={{color: "white"}}>ndi</span><span style={{color: "green"}}>stry</span></p>
+        </div>
+        <><Nav vertical className="sidebarNav" >
             {navigation.map((navi, index) => (
               <NavItem key={index} className="sidenav-bg" onClick={remove}>
                 <Link

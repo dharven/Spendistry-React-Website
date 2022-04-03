@@ -173,15 +173,15 @@ function EditProfile(props) {
                 <Link to ="/Forgot"> <button>Change Password</button></Link>
             </div> */}
              <h3>Edit Profile</h3>
-            <div id="edit-profile-pic">
-            <img src={img} alt="Image" className="image" id="pro-pic" width="50" height="50"/>
-            
-            </div>
+            <div id="edit-profile-pic" style={{boxSizing:"border-box"}}>
+            <img src={img} alt="Image" className="image" id="pro-pic" width="70" height="70"/>
             <div id="edit-profile-input-field">
         <input type="file"  name="userProfile" onChange={changeHandler} accept="image/*" id="file-pic"/>
         </div>
+            </div>
+            
         <div className="form-group">
-        <p id="confirmation">{confimation}</p>
+        {/* <p id="confirmation">{confimation}</p> */}
                 
 
         <div id="edit-profile-submit-field"> 

@@ -11,6 +11,8 @@ const ProjectTables = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+
+    document.getElementsByClassName("container")[0].style.cssText = "background: #00B4D8;";
       if (localStorage.getItem('email') !== null ) {
         var email = localStorage.getItem('email')
       } else {
@@ -51,8 +53,8 @@ const ProjectTables = () => {
 
   return (
     <div >
-      <Card >
-        <CardBody>
+      <Card className='container' >
+        <CardBody >
           <CardTitle tag="h5">Recent Bills</CardTitle><br />
           <div class="input-group">
   <input type="search" id="search" onChange={handleSearch} class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
@@ -64,7 +66,6 @@ const ProjectTables = () => {
             <thead>
               <tr>
                 <th>Business Name</th>
-                
                 <th>Monthly Expenses</th>
                 <th>Total Expenses</th>
               </tr>
@@ -79,9 +80,9 @@ const ProjectTables = () => {
               }).map((tdata, index) => (
                 <tr key={index} 
                 //send data to new page with row click
+                // className="border-top" //to show white line
                 onClick={() => onInvoiceClick(tdata, index)}
-
-                className="border-top" id="shadow-effect">
+                id="shadow-effect">
                   
                   <td>
                     <div className="d-flex align-items-center p-2">

@@ -7,7 +7,7 @@ const Header = () => {
   
   return (
     
-    <Navbar color="white" light expand="md" className="fix-header">
+    <Navbar color="dark blue" light expand="md" className="fix-header">
       
       <div className="d-flex align-items-center">
         <div>
