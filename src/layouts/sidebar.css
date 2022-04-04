@@ -1,10 +1,22 @@
 #logout-btn:hover{
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(218, 20, 20, 0.866);
     border-radius: 8px;
     
 }
 #logout-btn{
     height: 40px;
+}
+
+.sidebarArea .sidenav-bg .active {
+    background-color: #0251D9;
+    border-radius: 8px;
+    color: white;
+}
+
+
+
+.sidebarArea .nav-link {
+    color: #badafa;
 }
 
 .menuButton{

@@ -148,30 +148,9 @@ function EditProfile(props) {
         <Fragment >
  
             {/* <div style={{overflowY:"scroll" ,overflowX:"auto", height:height-150}} > */}
-                 <div className="App">
+       <div className="App">
         <div className="outer" >
         <div className="inner">
-            {/* image */}
-       
-			{/* {isSelected ? (
-				<div>
-					<p>Filename: {selectedFile.name}</p>
-					<p>Filetype: {selectedFile.type}</p>
-					<p>Size in bytes: {selectedFile.size}</p>
-					<p>
-						lastModifiedDate:{' '}
-						{selectedFile.lastModifiedDate.toLocaleDateString()}
-					</p>
-				</div>
-			) : (
-				<p>Select a file to show details</p>
-			)} */}
-			
-{/* Form */}
-        {/* <div className="form-group">
-         <label>Password</label>
-                <Link to ="/Forgot"> <button>Change Password</button></Link>
-            </div> */}
              <h3>Edit Profile</h3>
             <div id="edit-profile-pic" style={{boxSizing:"border-box"}}>
             <img src={img} alt="Image" className="image" id="pro-pic" width="70" height="70"/>
@@ -237,8 +216,8 @@ function EditProfile(props) {
         </div>
         </div>
             {/* </div> */}
-       
-                     
+    
+
         
 
         </Fragment>

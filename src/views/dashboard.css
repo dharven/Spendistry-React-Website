@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Alata|Roboto&display=swap');
+
 *{
     box-sizing: border-box;
   }
@@ -6,40 +8,84 @@ html, body{
     width: 100%;
     margin: 0;
     padding: 0;
+    font-family: 'Alata';
 }
 body{
-    background-color: #E7F5F8;
-    
+    background-color: #F5F9FA;
+    font-family: 'Alata';
 }
 img{
 	object-fit: cover;
 }
 
+.card {
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 5%);
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+#cardP {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    width: 100vh;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border: 0 solid rgba(0, 0, 0, 0.125);
+    background-color: #0251D9;
+    border-radius: 8px;
+}
+
+.monthly{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    border-radius: 8px;
+    color: white;
+    font-size: 1.5rem;
+    text-align: center;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+#table-row{
+    display: flex;
+    width: 70px;
+}
+
+#tCard{
+    height: 130px;
+}
+
+@media only screen and (max-width: 600px) {
+    #tCard {
+        width: 180vh;
+    }
+}
+
+
+.monthly1{
+    position: absolute;
+    top: 10%;
+    left: 35%;
+    width: 100%;
+    height: 100%;
+    
+    border-radius: 8px;
+    color: white;
+    text-align: center;
+    
+}
 ::-webkit-scrollbar {
     width: 0px;
     height:0.2%; 
     }
 
-#sidebarArea{
-    position:relative;
-    /* background:"#03045E"; */
-}
 
-#sidebarArea:before{
-        content: "";
-        position:absolute;
-        top:-40px;
-        left:0;
-        height:40px;
-        width: 40px;
-        border-bottom-left-radius: 50%;
-        background:#000;
-      
-}
-
-#sidebarArea:after{
-    box-shadow: 0 20px 0 0 #522d5b;
-}
 
 #name-reported{
     padding-left: 4%;

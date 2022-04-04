@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Alata|Roboto&display=swap');
+
 * {
     box-sizing: border-box;
   }
@@ -6,8 +8,8 @@
     min-height: 100%;
     /* display: flex; */
     font-weight: 400;
-    font-family: sans-serif;
-    background-color: #E7F5f8;
+    font-family: 'Alata';
+    background-color: #F5F9FA;
   }
   
   body, html, .App, #root, .outer {

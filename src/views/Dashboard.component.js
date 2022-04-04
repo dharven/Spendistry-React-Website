@@ -14,6 +14,8 @@ import { Link } from "react-router-dom";
 
 
 
+
+
 const Starter = () => {
 
   const [data, setData] = useState([{MonthlyTotalAll:"", AllTimeTotal:"", qr:""}]);
@@ -24,10 +26,11 @@ const Starter = () => {
 
   useEffect(() => {
     //dissable scroll
+    // Initialize editor.
     setheight(window.innerHeight)
-    document.getElementsByClassName("text-center")[0].style.cssText = "background: #00B4D8;";
-    document.getElementsByClassName("text-center")[1].style.cssText = "background: #00B4D8;";
-    document.getElementsByClassName("text-center")[2].style.cssText = "background: #00B4D8;";
+    // document.getElementsByClassName("text-center")[0].style.cssText = "background: #90e0ef;";
+    // document.getElementsByClassName("text-center")[1].style.cssText = "background: #00B4D8;";
+    // document.getElementsByClassName("text-center")[2].style.cssText = "background: #00B4D8;";
     console.log(document.getElementsByTagName("h5"))
     document.body.style.overflow = "hidden";
     const fetchData = async () => {
@@ -72,7 +75,7 @@ const Starter = () => {
     {(() => {
         if (window.innerWidth < 768) {
           return (
-            <div style={{overflowY:"scroll" ,overflowX:"clip", height:height-170}}>
+            <div style={{overflowY:"scroll" ,overflowX:"clip", height:height-100}}>
               <Row>
     <Col md="6" lg="4">
     
@@ -135,7 +138,7 @@ const Starter = () => {
       <Card body className="text-center">
         <CardTitle tag="h5" style={{color:"#03045E"}}>Monthly Expenses</CardTitle>
         <CardText>
-       <h3  style={{color:"#E7F5F8"}}>₹{data[0].MonthlyTotalAll}</h3> 
+       <h3  >₹{data[0].MonthlyTotalAll}</h3> 
         </CardText>
         {/* <div>
           <Button color="light-danger">{data[0]._id}</Button>
@@ -146,7 +149,7 @@ const Starter = () => {
       <Card body className="text-center">
         <CardTitle tag="h5" style={{color:"#03045E"}}>Total Expenses</CardTitle>
         <CardText>
-        <h3  style={{color:"#E7F5F8"}}>₹{data[0].AllTimeTotal}</h3>
+        <h3  >₹{data[0].AllTimeTotal}</h3>
         </CardText>
         {/* <div>
           <Button color="light-danger">{data[0]._id}</Button>
@@ -158,7 +161,7 @@ const Starter = () => {
       <Card body className="text-center">
         <CardTitle tag="h5" style={{color:"#03045E"}}>Your QR Code</CardTitle>
         <CardText>
-        <QRCode value={data[0].qr} bgColor="#00B4D8" fgColor="#000000" size={100}/>
+        <QRCode value={data[0].qr} size={100}/>
         </CardText>
         <div>
           <Button onClick={handleShare} color="white"><i class="bi bi-share" ></i></Button>
