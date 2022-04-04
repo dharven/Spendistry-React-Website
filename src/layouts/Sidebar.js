@@ -9,7 +9,7 @@ const navigation = [
   {
     title: "Dashboard",
     href: "/dashboard",
-    icon: "bi bi-speedometer2",
+    icon: "bi bi-window-sidebar",
   },
   {
     title: "All Invoices",
@@ -24,7 +24,7 @@ const navigation = [
   {
     title: "Returned Invoices",
     href: "/Returned",
-    icon: "bi bi-layout-split",
+    icon: "bi bi-arrow-return-left",
   },
  
   {
