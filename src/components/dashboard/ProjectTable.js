@@ -76,7 +76,7 @@ const ProjectTables = () => {
                     <Table responsive borderless>
                       <thead>
                       <tr>
-                <th>Business Name</th>
+                <th style={{paddingLeft:"20px"}}>Business Name</th>
                 <th  style={{textAlign: "center", verticalAlign: "middle"}}>Monthly Expenses</th>
                 <th  style={{textAlign: "center", verticalAlign: "middle"}}>Total Expenses</th>
               </tr>

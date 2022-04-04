@@ -24,6 +24,15 @@ img{
     border-radius: 10px;
 }
 
+.cardM{
+    margin-bottom: 24px;
+}
+
+.cardD{
+    margin-bottom: 0px;
+}
+
+
 #cardP {
     position: relative;
     display: flex;

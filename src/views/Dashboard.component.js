@@ -10,7 +10,7 @@ import {
 import axios from 'axios';
 import "./dashboard.css"
 import QRCode from "react-qr-code";
-import { Link } from "react-router-dom";
+import { VictoryBar, VictoryChart, VictoryTheme, VictoryStack } from 'victory';
 
 
 
@@ -22,7 +22,18 @@ const Starter = () => {
   const [qr, setQr] = useState('');
   const [notify, setNotify] = useState('');
   const [height, setheight] = useState(null)
-
+  const data2012 = [
+    {quarter: 1, earnings: 13000},
+    {quarter: 2, earnings: 16500},
+    {quarter: 3, earnings: 14250},
+    {quarter: 4, earnings: 19000},
+    {quarter: 5, earnings: 12500},
+    {quarter: 6, earnings: 15000},
+    {quarter: 7, earnings: 11500},
+    {quarter: 8, earnings: 18000},
+    {quarter: 9, earnings: 13000},
+    {quarter: 10, earnings: 19500},
+  ];
 
   useEffect(() => {
     //dissable scroll
@@ -76,38 +87,55 @@ const Starter = () => {
         if (window.innerWidth < 768) {
           return (
             <div style={{overflowY:"scroll" ,overflowX:"clip", height:height-100}}>
-              <Row>
-    <Col md="6" lg="4">
-    
-      <Card body className="text-center" id="cardM" >
+             <Row>
+                <Col md="6" lg="4">
+ 
+   
+      <Card body className="text-center cardM"  >
         <CardTitle tag="h5" style={{color:"#03045E"}}>Monthly Expenses</CardTitle>
         <CardText>
-       <h3  style={{color:"#E7F5F8"}}>₹{data[0].MonthlyTotalAll}</h3> 
+       <h3  style={{color:"#03045E"}}>₹{data[0].MonthlyTotalAll}</h3> 
         </CardText>
         {/* <div>
           <Button color="light-danger">{data[0]._id}</Button>
         </div> */}
+         </Card>
+
       
-      </Card>
-      
-    </Col>
-    <Col md="6" lg="4">
-      <Card body className="text-center">
+      <Card body className="text-center cardD">
         <CardTitle tag="h5" style={{color:"#03045E"}}>Total Expenses</CardTitle>
         <CardText>
-        <h3  style={{color:"#E7F5F8"}}>₹{data[0].AllTimeTotal}</h3>
+        <h3  style={{color:"#03045E"}}>₹{data[0].AllTimeTotal}</h3>
         </CardText>
         {/* <div>
           <Button color="light-danger">{data[0]._id}</Button>
         </div> */}
       </Card>
-    </Col>
     
+   
+    </Col>
     <Col md="6" lg="4">
-      <Card body className="text-center">
+      <Card body className="text-center cardD">
+        <VictoryChart
+        domainPadding={10}
+        theme={VictoryTheme.material}
+        height={190}
+        >
+          <VictoryStack>
+      <VictoryBar
+            data={data2012}
+            x="quarter"
+            y="earnings"
+          />
+          </VictoryStack>
+          </VictoryChart>
+      </Card>
+    </Col>
+    <Col md="6" lg="4">
+      <Card body className="text-center cardD">
         <CardTitle tag="h5" style={{color:"#03045E"}}>Your QR Code</CardTitle>
         <CardText>
-        <QRCode value={data[0].qr}  bgColor="#00B4D8" fgColor="#000000" size={100}/>
+        <QRCode value={data[0].qr} fgColor="#000000" size={100}/>
         </CardText>
         <div>
           <Button onClick={handleShare} color="white"><i class="bi bi-share" ></i></Button>
@@ -133,35 +161,55 @@ const Starter = () => {
           return (
             // style={{overflowY:"scroll" ,overflowX:"clip", height:height-150}}
             <div >    
-            <Row>
-    <Col md="6" lg="4">
-      <Card body className="text-center">
+              <Row>
+                <Col md="6" lg="4">
+ 
+   
+      <Card body className="text-center cardM"  >
         <CardTitle tag="h5" style={{color:"#03045E"}}>Monthly Expenses</CardTitle>
         <CardText>
-       <h3  >₹{data[0].MonthlyTotalAll}</h3> 
+       <h3  style={{color:"#03045E"}}>₹{data[0].MonthlyTotalAll}</h3> 
         </CardText>
         {/* <div>
           <Button color="light-danger">{data[0]._id}</Button>
         </div> */}
-      </Card>
-    </Col>
-    <Col md="6" lg="4">
-      <Card body className="text-center">
+         </Card>
+
+      
+      <Card body className="text-center cardD">
         <CardTitle tag="h5" style={{color:"#03045E"}}>Total Expenses</CardTitle>
         <CardText>
-        <h3  >₹{data[0].AllTimeTotal}</h3>
+        <h3  style={{color:"#03045E"}}>₹{data[0].AllTimeTotal}</h3>
         </CardText>
         {/* <div>
           <Button color="light-danger">{data[0]._id}</Button>
         </div> */}
       </Card>
-    </Col>
     
+   
+    </Col>
     <Col md="6" lg="4">
-      <Card body className="text-center">
+      <Card body className="text-center cardD">
+        <VictoryChart
+        domainPadding={10}
+        theme={VictoryTheme.material}
+        height={190}
+        >
+          <VictoryStack>
+      <VictoryBar
+            data={data2012}
+            x="quarter"
+            y="earnings"
+          />
+          </VictoryStack>
+          </VictoryChart>
+      </Card>
+    </Col>
+    <Col md="6" lg="4">
+      <Card body className="text-center cardD">
         <CardTitle tag="h5" style={{color:"#03045E"}}>Your QR Code</CardTitle>
         <CardText>
-        <QRCode value={data[0].qr} size={100}/>
+        <QRCode value={data[0].qr} fgColor="#000000" size={100}/>
         </CardText>
         <div>
           <Button onClick={handleShare} color="white"><i class="bi bi-share" ></i></Button>

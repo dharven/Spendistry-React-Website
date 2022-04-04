@@ -83,14 +83,15 @@ if (localStorage.getItem('email') !== null || localStorage.getItem('Jwt') !== nu
 
   }
 
-  const handleLogo = () => {
+  const handleLogo = (e) => {
+    e.preventDefault();
       setLogo(true);
   }
 
   if(logo){
-    // return(
-      window.location.href = "/dashboard"
-    // )
+    window.location.href = "#/dashboard"
+      setLogo(false)
+    
   }
 
   if(reload){
@@ -106,7 +107,7 @@ if (localStorage.getItem('email') !== null || localStorage.getItem('Jwt') !== nu
           className="ms-auto text-white"
           onClick={() => showMobilemenu()}
         >       
-          <i className="bi bi-menu-down"></i>
+          <i className="bi bi-sliders"></i>
         </Button>
       </div>
 
@@ -133,7 +134,7 @@ if (localStorage.getItem('email') !== null || localStorage.getItem('Jwt') !== nu
               </NavItem>
             ))}
 
-          </Nav><p id="logout-btn" className="logoutbtn" style={{borderRadius:"8px",color: '#badafa', paddingTop: '3%', cursor: "pointer" }} onClick={Logout}><i className="bi bi-door-closed"></i><span className="ms-3 d-inline-block">Logout</span></p></>    
+          </Nav><p id="logout-btn" className="logoutbtn" style={{borderRadius:"8px",color: '#badafa', paddingTop: '3%', cursor: "pointer" }} onClick={Logout}><i className="bi bi-arrow-bar-left"></i><span className="ms-3 d-inline-block">Logout</span></p></>    
         </div>
         : "" }
       </div>
