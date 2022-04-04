@@ -21,15 +21,19 @@ img{
 .card {
     box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 5%);
     margin-bottom: 10px;
-    border-radius: 10px;
+    border-radius: 12px;
 }
 
 .cardM{
-    margin-bottom: 24px;
+    margin-bottom: 16px;
 }
 
 .cardD{
     margin-bottom: 0px;
+}
+
+#share{
+    padding-bottom: 12px;
 }
 
 
@@ -68,11 +72,21 @@ img{
 
 #tCard{
     height: 130px;
+    padding-bottom: 10px;
+}
+
+#tCard:hover{
+    background-color: #ace5ef61;
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 600px) {
     #tCard {
         width: 180vh;
+    }
+
+    .cardD{
+        margin-bottom: 10px;
     }
 }
 

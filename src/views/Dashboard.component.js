@@ -43,7 +43,9 @@ const Starter = () => {
     // Initialize editor.
     setheight(window.innerHeight)
     // document.getElementsByClassName("text-center")[0].style.cssText = "background: #90e0ef;";
-    // document.getElementsByClassName("text-center")[1].style.cssText = "background: #00B4D8;";
+    // document.getElementsByClassName("text-center")[1].style.cssText = "background: #90e0ef;";
+    // document.getElementsByClassName("text-center")[2].style.cssText = "background: #90e0ef;";
+    // document.getElementsByClassName("text-center")[3].style.cssText = "background: #90e0ef;";
     // document.getElementsByClassName("text-center")[2].style.cssText = "background: #00B4D8;";
     console.log(document.getElementsByTagName("h5"))
     document.body.style.overflow = "hidden";
@@ -95,7 +97,7 @@ const Starter = () => {
       onClose={() => setSnackbarOpen(false)}>
      <SnackbarContent
       style={{backgroundColor: '#005EFC'}}
-      message={snackbarMessage}/> 
+      message={<i class="bi bi-clipboard"> {snackbarMessage}</i>}/> 
       </SnackBar>
     {(() => {
         if (window.innerWidth < 768) {
@@ -207,7 +209,7 @@ const Starter = () => {
         <VictoryChart
         domainPadding={10}
         theme={VictoryTheme.material}
-        height={190}
+        height={182}
         >
           <VictoryStack>
       <VictoryBar
@@ -220,14 +222,13 @@ const Starter = () => {
       </Card>
     </Col>
     <Col md="6" lg="4">
-      <Card body className="text-center cardD">
+      <Card body className="text-center cardD" >
         <CardTitle tag="h5" style={{color:"#03045E"}}>Your QR Code</CardTitle>
         <CardText>
         <QRCode value={data[0].qr} fgColor="#000000" size={100}/>
         </CardText>
         <div>
-          <Button onClick={handleShare} color="white"><i class="bi bi-share" ></i></Button>
-          <p id="notify">{notify}</p>
+          <Button onClick={handleShare} color="white" id="share"><i class="bi bi-share" ></i></Button>
         </div>
       </Card>
     </Col>
