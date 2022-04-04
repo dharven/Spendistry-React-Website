@@ -25,8 +25,8 @@ const AllInvoices = () => {
   // const [message, setMessage] = useState('');
   const [item, setItem] = useState({});
   const [height, setheight] = useState(null)
-  const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [snackbarMessage, setSnackbarMessage] = useState('testing');
+  const [snackbar, setSnackbar] = useState({open:false, message:'', color:'', icon:''});
+
 
   //modal
   // const [open, setOpen] = useState(false);
@@ -54,15 +54,13 @@ const AllInvoices = () => {
       }).then(res => {
         console.log(res)
         // setMessage("Reported successfully")
-        setSnackbarOpen(true);
-        setSnackbarMessage("Downloaded successfully")
+        setSnackbar({open:true, message:"Reported successfully", color:"#005EFC", icon:"bi bi-exclamation-octagon-fill"});
   
         setShow(false)
       }).catch(err => {
         console.log(err)
         // setMessage("Error occured")
-        setSnackbarOpen(true);
-        setSnackbarMessage("Something went wrong")
+        setSnackbar({open:true, message:"Something went wrong!!", color:"red", icon:"bi bi-exclamation-octagon-fill"});
   
         setShow(false)
       })
@@ -168,8 +166,7 @@ const AllInvoices = () => {
     ).then(res => {
       console.log("pdf", res.data)
       fileDownload(res.data, item.invoiceSentBy+"_"+item.roundoff+".pdf");
-      setSnackbarOpen(true);
-      setSnackbarMessage("Downloaded successfully")
+      setSnackbar({open:true, message:"Downloaded successfully", color:"#005EFC", icon:"bi bi-download"});
 
       
     }).catch(err => {
@@ -198,13 +195,12 @@ const AllInvoices = () => {
       </Modal>
       <SnackBar
       anchorOrigin={{vertical: 'bottom', horizontal: "center"}}
-      open={snackbarOpen}
+      open={snackbar.open}
       autoHideDuration={2000}
-      message={snackbarMessage}
-      onClose={() => setSnackbarOpen(false)}>
+      onClose={() => setSnackbar({open:false})}>
      <SnackbarContent
-      style={{backgroundColor: '#005EFC'}}
-      message={snackbarMessage}/> 
+      style={{backgroundColor: snackbar.color}}
+      message={<i class={snackbar.icon}> {snackbar.message}</i>}/> 
       </SnackBar>
       
      <div class="input-group">
@@ -305,7 +301,7 @@ const AllInvoices = () => {
           )
         } else {
           return (
-            <div style={{overflowY:"scroll" ,overflowX:"clip", height:height-150}}>
+            <div style={{overflowY:"scroll" ,overflowX:"clip", height:height-100}}>
                 <Row style={{marginBottom:"50"}}>
     
     {data.filter((item)=>{

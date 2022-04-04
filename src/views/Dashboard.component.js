@@ -23,8 +23,7 @@ const Starter = () => {
   const [qr, setQr] = useState('');
   const [notify, setNotify] = useState('');
   const [height, setheight] = useState(null)
-  const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [snackbarMessage, setSnackbarMessage] = useState('testing');
+  const [snackbar, setSnackbar] = useState({open:false, message:'', color:''});
   const data2012 = [
     {quarter: 1, earnings: 13000},
     {quarter: 2, earnings: 16500},
@@ -76,11 +75,8 @@ const Starter = () => {
     navigator.clipboard
   .writeText(window.location.hostname+"/#/Qrshare/"+qr)
   .then(() => {console.log(window.location.hostname);
-      setSnackbarMessage("Copied to clipboard")
-      setSnackbarOpen(true);
-      setTimeout(function(){
-        setNotify(null)
-     }, 2000);
+      // setSnackbarMessage("Copied to clipboard")
+      setSnackbar({open:true, message:" Copied to clipboard", color:"#005EFC"});
 })
   .catch((err) => console.log(err))
   }
@@ -91,13 +87,12 @@ const Starter = () => {
     <div>
       <SnackBar
       anchorOrigin={{vertical: 'bottom', horizontal: "center"}}
-      open={snackbarOpen}
+      open={snackbar.open}
       autoHideDuration={2000}
-      message={snackbarMessage}
-      onClose={() => setSnackbarOpen(false)}>
+      onClose={() => setSnackbar({open:false})}>
      <SnackbarContent
-      style={{backgroundColor: '#005EFC'}}
-      message={<i class="bi bi-clipboard"> {snackbarMessage}</i>}/> 
+      style={{backgroundColor: snackbar.color}}
+      message={<i class="bi bi-clipboard">{snackbar.message}</i>}/> 
       </SnackBar>
     {(() => {
         if (window.innerWidth < 768) {

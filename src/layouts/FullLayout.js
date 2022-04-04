@@ -69,11 +69,11 @@ const FullLayout = () => {
             {/* <Header /> */}
       <div className="pageWrapper d-lg-flex">
         {/********Sidebar**********/}
-        <div className="sidebarArea shadow" id="sidebarArea"  style={{background:"#005EFC", borderTopRightRadius: "25px", borderBottomRightRadius:"25px"}}>
+        <div className="sidebarArea shadow" id="sidebarArea"  style={{background:"#005EFC"}}>
           <Sidebar />
         </div>
         {/********Content Area**********/}
-        <div className="contentArea">
+        <div className="contentArea" style={{height:"100vh"}}>
           {/********Middle Content**********/}
           <Container className="p-4" fluid>
             <Outlet />

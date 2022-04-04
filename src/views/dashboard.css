@@ -80,13 +80,58 @@ img{
     cursor: pointer;
 }
 
+#sidebarArea{
+    border-top-right-radius: 25px; 
+    border-bottom-right-radius: 25px;
+}
+
+.expData{
+    text-align: center; 
+    vertical-align: middle;
+}
+
+.resHtag{
+    display: none;
+}
+
+
 @media only screen and (max-width: 600px) {
     #tCard {
-        width: 180vh;
+        display: grid;
+        height: auto;
+    }
+    #tHead{
+        display: none;
+    }
+
+    .expData{
+        text-align: left; 
+        vertical-align: middle;
+    }
+    .table > :not(caption) > * > * {
+        padding: 2px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .resHtag{
+        display: flex;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #tRow{
+        display: grid;
+        margin: 0px;
     }
 
     .cardD{
         margin-bottom: 10px;
+    }
+
+    #sidebarArea{
+        border-top-right-radius: 0px; 
+        border-bottom-left-radius: 25px;
     }
 }
 

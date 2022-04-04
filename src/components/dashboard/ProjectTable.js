@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from 'react'
-import { Card, CardBody, CardTitle, Table } from "reactstrap";
+import { Card, CardBody, CardTitle, Row, Table } from "reactstrap";
 import axios from 'axios';
 import "./PJ.css";
 import { Navigate , Link } from 'react-router-dom';
@@ -75,7 +75,7 @@ const ProjectTables = () => {
                   <CardBody>
                     <Table responsive borderless>
                       <thead>
-                      <tr>
+                      <tr id='tHead'>
                 <th style={{paddingLeft:"20px"}}>Business Name</th>
                 <th  style={{textAlign: "center", verticalAlign: "middle"}}>Monthly Expenses</th>
                 <th  style={{textAlign: "center", verticalAlign: "middle"}}>Total Expenses</th>
@@ -85,7 +85,7 @@ const ProjectTables = () => {
                 <tr key={index} 
                 //send data to new page with row click
                 // className="border-top" //to show white line
-                onClick={() => onInvoiceClick(tdata, index)}
+                onClick={() => onInvoiceClick(tdata, index)} id='tRow'
                 >
                    {/* <Card> */}
                   <td>
@@ -103,9 +103,9 @@ const ProjectTables = () => {
                         width="45"
                         height="45"
                       />
-                      <div className="ms-3">
-                  
+                      <div className="ms-3">   
                         <h6 className="mb-0">{tdata._id}</h6>
+                       
                         
                         <span className="text-muted">{tdata._id}</span>
                       </div>
@@ -114,8 +114,13 @@ const ProjectTables = () => {
                    
                     
                   </td>
-                  <td style={{textAlign: "center", verticalAlign: "middle"}}>₹{tdata.MonthlyTotal}</td>
-                  <td  style={{textAlign: "center", verticalAlign: "middle"}}>₹{tdata.AllTotal}</td>
+                
+                  <h6 class="resHtag">Monthly Expenses: </h6>
+                  <td class="expData" >₹{tdata.MonthlyTotal}</td>
+                  
+                  <h6 class="resHtag">Total Expenses: </h6>
+                  <td  class="expData">₹{tdata.AllTotal}</td>
+                  
                   {/* </Card> */}
                 </tr>
                 </tbody>

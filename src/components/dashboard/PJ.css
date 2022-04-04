@@ -5,13 +5,21 @@
 }
 #table-scroll 
 {
-    height: 310px;
+    height: 50vh;
     overflow: auto;
 }
 /* width */
 #table-scroll::-webkit-scrollbar {
     width: 15px;
   }
+
+  /* @media (max-width: 768px) {
+    #tCard{
+        display: grid;
+        width: 100%;
+    }
+  } */
+
   
   /* Track */
   #table-scroll::-webkit-scrollbar-track {

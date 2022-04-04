@@ -1,7 +1,9 @@
-import { useState} from 'react'
+import { useEffect, useState} from 'react'
 import { Button, Nav, NavItem } from "reactstrap";
 import { Link, useLocation, Navigate } from "react-router-dom";
 import "./sidebar.css"
+// import 'bootstrap/dist/css/bootstrap.min.css'; //toggle logo
+
 
 const navigation = [
   {
@@ -17,7 +19,7 @@ const navigation = [
   {
     title: "Reported Invoices",
     href: "/Reported",
-    icon: "bi bi-card-text",
+    icon: "bi bi-exclamation-octagon-fill",
   },
   {
     title: "Returned Invoices",
@@ -41,6 +43,15 @@ const navigation = [
 const Sidebar = () => {
   const [reload, setReload] = useState(false)
   const [logo, setLogo] = useState(false);
+  const [collapsed, setCollapsed] = useState(false);
+
+  useEffect(() => {
+        if(window.innerWidth < 768){
+          setCollapsed(false);
+        } else{
+          setCollapsed(true);
+        }
+  },[]);
 
   const Logout = () => {
     
@@ -106,11 +117,11 @@ if (localStorage.getItem('email') !== null || localStorage.getItem('Jwt') !== nu
           className="ms-auto text-white"
           onClick={() => showMobilemenu()}
         >       
-          <i className="bi bi-sliders"></i>
+          <i class="bi bi-menu-button-wide"></i>
         </Button>
       </div>
 
-      {show === true ? 
+      {show === collapsed ? 
       
       <div className="p-3 mt-2" >
         <div>
@@ -135,7 +146,12 @@ if (localStorage.getItem('email') !== null || localStorage.getItem('Jwt') !== nu
 
           </Nav><p id="logout-btn" className="logoutbtn" style={{borderRadius:"8px",color: '#badafa', paddingTop: '3%', cursor: "pointer" }} onClick={Logout}><i className="bi bi-arrow-bar-left"></i><span className="ms-3 d-inline-block">Logout</span></p></>    
         </div>
-        : "" }
+        : 
+        <div>
+          {/* <p style={{fontSize: '21px', textAlign: "center", paddingTop: '30px'}}> <span style={{color: "orange"}}>Spe</span><span style={{color: "white"}}>ndi</span><span style={{color: "#006400"}}>stry</span></p> */}
+          <img src='https://i.ibb.co/RjFjbb9/spendistry-Web.png' alt="logo" style={{width: '100%', height: '100%', cursor:"pointer", paddingBottom:"10px"}} onClick={handleLogo} />
+        </div>
+        }
       </div>
   
   );
