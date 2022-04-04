@@ -4,6 +4,9 @@ import fileDownload from 'js-file-download';
 // import { Modal } from "react-responsive-modal";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Modal } from 'react-bootstrap';
+import SnackBar from '@material-ui/core/SnackBar';
+import IconButton from '@material-ui/core/IconButton';
+import { SnackbarContent } from "@material-ui/core";
 
 import {
   Card,
@@ -22,6 +25,8 @@ const AllInvoices = () => {
   // const [message, setMessage] = useState('');
   const [item, setItem] = useState({});
   const [height, setheight] = useState(null)
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('testing');
 
   //modal
   // const [open, setOpen] = useState(false);
@@ -49,10 +54,16 @@ const AllInvoices = () => {
       }).then(res => {
         console.log(res)
         // setMessage("Reported successfully")
+        setSnackbarOpen(true);
+        setSnackbarMessage("Downloaded successfully")
+  
         setShow(false)
       }).catch(err => {
         console.log(err)
         // setMessage("Error occured")
+        setSnackbarOpen(true);
+        setSnackbarMessage("Something went wrong")
+  
         setShow(false)
       })
 
@@ -157,7 +168,8 @@ const AllInvoices = () => {
     ).then(res => {
       console.log("pdf", res.data)
       fileDownload(res.data, item.invoiceSentBy+"_"+item.roundoff+".pdf");
-
+      setSnackbarOpen(true);
+      setSnackbarMessage("Downloaded successfully")
 
       
     }).catch(err => {
@@ -184,6 +196,16 @@ const AllInvoices = () => {
           </Button>
         </Modal.Footer>
       </Modal>
+      <SnackBar
+      anchorOrigin={{vertical: 'bottom', horizontal: "center"}}
+      open={snackbarOpen}
+      autoHideDuration={2000}
+      message={snackbarMessage}
+      onClose={() => setSnackbarOpen(false)}>
+     <SnackbarContent
+      style={{backgroundColor: '#005EFC'}}
+      message={snackbarMessage}/> 
+      </SnackBar>
       
      <div class="input-group">
    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" onChange={handleSearch} />

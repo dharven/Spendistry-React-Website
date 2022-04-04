@@ -66,12 +66,11 @@ if (localStorage.getItem('email') !== null || localStorage.getItem('Jwt') !== nu
   const remove = (e) => {
     e.preventDefault();
     // console.log("e",e.target.innerHTML)
-    sessionStorage.removeItem("id")
-    // console.log(navigation[1].title)
+       // console.log(navigation[1].title)
     if(e.target.innerHTML.match(navigation[1].title)){
       
       if(sessionStorage.getItem('id')){
-        
+        sessionStorage.removeItem("id")
         setReload(true)
       }
     

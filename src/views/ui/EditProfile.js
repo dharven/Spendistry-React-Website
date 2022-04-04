@@ -1,5 +1,9 @@
 import React, { Component, Fragment, useState, useEffect } from "react";
 import axios from "axios";
+import SnackBar from '@material-ui/core/SnackBar';
+import IconButton from '@material-ui/core/IconButton';
+import { SnackbarContent } from "@material-ui/core";
+
 import {
     Card,
     CardText,
@@ -20,6 +24,8 @@ function EditProfile(props) {
     const [show, setShow] = useState("")
     const [confimation, setconfimation] = useState(null)
     const [height, setheight] = useState(null)
+    const [snackbarOpen, setSnackbarOpen] = useState(false);
+    const [snackbarMessage, setSnackbarMessage] = useState('testing');
     
     useEffect(() => {
         if (localStorage.getItem('email') !== null ) {
@@ -67,7 +73,7 @@ function EditProfile(props) {
           // for image get 
           const [img, setImg] = useState();
                     useEffect(() => {
-                        document.body.style.overflow = 'scroll';
+                        document.body.style.overflowX = 'hindden';
                         setheight(window.innerHeight)
                         if (localStorage.getItem('email') !== null ) {
                             var email = localStorage.getItem('email')
@@ -120,19 +126,16 @@ function EditProfile(props) {
                     //bring back p tag with id confirmation
             
                     // document.getElementById("confirmation").show();
-                    setconfimation("Image Uploaded!")
+                    setSnackbarMessage("Profile Picture Updated")
+                    setSnackbarOpen(true);
                 })
                 .catch((error) => {
                     console.error('Error:>>>>>', error,selectedFile );
                     //show p tag with id confirmation
-                    setconfimation("Error in uploading the image!")
+                   setSnackbarMessage("Something went wrong!")
+                    setSnackbarOpen(true);
                 });
-            } else {
-                setconfimation("Select a file first!")
             }
-            setTimeout(() => {
-                setconfimation(null)
-            }, 2500);
         };
     
         const handleSubmission = () => {
@@ -146,7 +149,16 @@ function EditProfile(props) {
           
     return (
         <Fragment >
- 
+ <SnackBar
+      anchorOrigin={{vertical: 'bottom', horizontal: "center"}}
+      open={snackbarOpen}
+      autoHideDuration={2000}
+      message={snackbarMessage}
+      onClose={() => setSnackbarOpen(false)}>
+     <SnackbarContent
+      style={{backgroundColor: '#005EFC'}}
+      message={snackbarMessage}/> 
+      </SnackBar>
             {/* <div style={{overflowY:"scroll" ,overflowX:"auto", height:height-150}} > */}
        <div className="App">
         <div className="outer" >

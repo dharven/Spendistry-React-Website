@@ -11,8 +11,9 @@ import axios from 'axios';
 import "./dashboard.css"
 import QRCode from "react-qr-code";
 import { VictoryBar, VictoryChart, VictoryTheme, VictoryStack } from 'victory';
-
-
+import SnackBar from '@material-ui/core/SnackBar';
+import IconButton from '@material-ui/core/IconButton';
+import { SnackbarContent } from "@material-ui/core";
 
 
 
@@ -22,6 +23,8 @@ const Starter = () => {
   const [qr, setQr] = useState('');
   const [notify, setNotify] = useState('');
   const [height, setheight] = useState(null)
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('testing');
   const data2012 = [
     {quarter: 1, earnings: 13000},
     {quarter: 2, earnings: 16500},
@@ -71,7 +74,8 @@ const Starter = () => {
     navigator.clipboard
   .writeText(window.location.hostname+"/#/Qrshare/"+qr)
   .then(() => {console.log(window.location.hostname);
-      setNotify("Copied to clipboard")
+      setSnackbarMessage("Copied to clipboard")
+      setSnackbarOpen(true);
       setTimeout(function(){
         setNotify(null)
      }, 2000);
@@ -83,6 +87,16 @@ const Starter = () => {
   return (
     
     <div>
+      <SnackBar
+      anchorOrigin={{vertical: 'bottom', horizontal: "center"}}
+      open={snackbarOpen}
+      autoHideDuration={2000}
+      message={snackbarMessage}
+      onClose={() => setSnackbarOpen(false)}>
+     <SnackbarContent
+      style={{backgroundColor: '#005EFC'}}
+      message={snackbarMessage}/> 
+      </SnackBar>
     {(() => {
         if (window.innerWidth < 768) {
           return (
