@@ -121,7 +121,7 @@ const AllInvoices = () => {
         process.env.REACT_APP_SPENDISTRY_API+'invoice/' + email
       );
       // console.log("all",result.data)
-      // console.log("test", result.data.businessName)
+      console.log("test", result.data.businessName)
 
       var temp = [];
 
