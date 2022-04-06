@@ -79,8 +79,6 @@ const Starter = () => {
         }
       }
       setRoundoff(temp);
-      console.log(temp)
-
     };
 
     fetchData();
