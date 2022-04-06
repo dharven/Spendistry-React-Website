@@ -67,12 +67,13 @@ const Starter = () => {
       console.log(result.data)    
       
       var temp = [];
+      var index = 1;
 
       //set roundoff array in state  
       for(var i=0; i<result.data.length; i++){
         for(var j=0; j<result.data[i].roundoff.length; j++){
           temp.push({
-            quarter: j+1,
+            quarter: index++,
             earnings: result.data[i].roundoff[j]
           })
         }
