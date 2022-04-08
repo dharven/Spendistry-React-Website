@@ -24,18 +24,19 @@ const Starter = () => {
   const [notify, setNotify] = useState('');
   const [height, setheight] = useState(null)
   const [snackbar, setSnackbar] = useState({open:false, message:'', color:''});
-  const data2012 = [
-    {quarter: 1, earnings: 13000},
-    {quarter: 2, earnings: 16500},
-    {quarter: 3, earnings: 14250},
-    {quarter: 4, earnings: 19000},
-    {quarter: 5, earnings: 12500},
-    {quarter: 6, earnings: 15000},
-    {quarter: 7, earnings: 11500},
-    {quarter: 8, earnings: 18000},
-    {quarter: 9, earnings: 13000},
-    {quarter: 10, earnings: 19500},
-  ];
+  // const data2012 = [
+  //   {quarter: 1, earnings: 13000},
+  //   {quarter: 2, earnings: 16500},
+  //   {quarter: 3, earnings: 14250},
+  //   {quarter: 4, earnings: 19000},
+  //   {quarter: 5, earnings: 12500},
+  //   {quarter: 6, earnings: 15000},
+  //   {quarter: 7, earnings: 11500},
+  //   {quarter: 8, earnings: 18000},
+  //   {quarter: 9, earnings: 13000},
+  //   {quarter: 10, earnings: 19500},
+  // ];
+  const [roundoff, setRoundoff] = useState([0, 0]);
 
   useEffect(() => {
     //dissable scroll
@@ -63,8 +64,21 @@ const Starter = () => {
       var QR = result.data[0].qr.replaceAll("/", '₹');
 
       setQr(QR);
-      console.log(result.data)     
+      console.log(result.data)    
       
+      var temp = [];
+      var index = 1;
+
+      //set roundoff array in state  
+      for(var i=0; i<result.data.length; i++){
+        for(var j=0; j<result.data[i].roundoff.length; j++){
+          temp.push({
+            quarter: index++,
+            earnings: result.data[i].roundoff[j]
+          })
+        }
+      }
+      setRoundoff(temp);
     };
 
     fetchData();
@@ -81,7 +95,6 @@ const Starter = () => {
   .catch((err) => console.log(err))
   }
 
-  
   return (
     
     <div>
@@ -134,7 +147,7 @@ const Starter = () => {
         >
           <VictoryStack>
       <VictoryBar
-            data={data2012}
+            data={roundoff}
             x="quarter"
             y="earnings"
           />
@@ -208,7 +221,7 @@ const Starter = () => {
         >
           <VictoryStack>
       <VictoryBar
-            data={data2012}
+            data={roundoff}
             x="quarter"
             y="earnings"
           />
