@@ -99,7 +99,7 @@ const AllInvoices = () => {
         process.env.REACT_APP_SPENDISTRY_API+'invoice/findEle/' + email + "/" + id,
       );
       // console.log(result.data)
-      var temp = result.data[0].bussinessName[0].invoices;
+      var temp = result.data[0].businessName[0].invoices;
       //convert unix time stamp to date
       for (var i = 0; i < temp.length; i++) {
         temp[i].invoiceDate = new Date(temp[i].invoiceTime).toLocaleDateString();
