@@ -55,6 +55,24 @@ const SignIn = () => {
         document.getElementById("emailError").innerText = ""
     }
 
+    const seePwd = () => {
+        const pwd = document.getElementById("password");
+       const z = document.getElementById("eye-slash");
+        const y = document.getElementById("eye");
+        pwd.type = "text";
+        y.style.display = "block";
+        z.style.display = "none";
+    }
+
+    const hidePwd = () => {
+        const pwd = document.getElementById("password");
+        const z = document.getElementById("eye-slash");
+        const y = document.getElementById("eye");
+        pwd.type = "password";
+        y.style.display = "none";
+        z.style.display = "block";
+    }
+
 
     if(registered){
         return(
@@ -97,6 +115,8 @@ const SignIn = () => {
             <div className="form-group">
                 <label>Password</label>
                 <input type="password" id="password" className="form-control" placeholder="Enter password" required/>
+                <i class="bi bi-eye-fill" id="eye" style={{cursor: "pointer", float: "right", marginTop: "-30px", marginRight: "10px"}} onClick={hidePwd} ></i>
+                <i class="bi bi-eye-slash-fill" id="eye-slash" style={{cursor: "pointer", float: "right", marginTop: "-30px", marginRight: "10px"}} onClick={seePwd} ></i>
             </div>
 
             <div className="form-group">

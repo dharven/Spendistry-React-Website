@@ -17,13 +17,31 @@ e.preventDefault();
     password:document.getElementById('password').value,
    };
  axios
-   .patch( process.env.REACT_APP_SPENDISTRY_API+`auth/b4xabhishek@gmail.com`, data)
+   .patch( process.env.REACT_APP_SPENDISTRY_API+`auth/`+props.email, data)
    .then(res => console.log(res))
    .then(() => {setMessage('PASSWORD CHANGED!')
 setGoToLogin(true)
 })
    .catch(err => 
     ({err: " Try Again -"+err.message}))
+}
+
+const seePwd = () => {
+    const pwd = document.getElementById("password");
+   const z = document.getElementById("eye-slash");
+    const y = document.getElementById("eye");
+    pwd.type = "text";
+    y.style.display = "block";
+    z.style.display = "none";
+}
+
+const hidePwd = () => {
+    const pwd = document.getElementById("password");
+    const z = document.getElementById("eye-slash");
+    const y = document.getElementById("eye");
+    pwd.type = "password";
+    y.style.display = "none";
+    z.style.display = "block";
 }
 
 if(goToLogin){
@@ -42,13 +60,15 @@ return (
         <form onSubmit={handlenewpassword}>
 
             <h3>Change your Password</h3>
-
             <div className="form-group">
                 <label for="email">New Password</label>
                 <input type="password" className="form-control"  
                 placeholder="Enter new Password" 
                 id="password"
                 required/>
+                                <i class="bi bi-eye-fill" id="eye" style={{cursor: "pointer", float: "right", marginTop: "-30px", marginRight: "10px"}} onClick={hidePwd} ></i>
+                <i class="bi bi-eye-slash-fill" id="eye-slash" style={{cursor: "pointer", float: "right", marginTop: "-30px", marginRight: "10px"}} onClick={seePwd} ></i>
+
             </div>
             <p id=" " style={{color: "red"}} >Email: {props.email} </p>
             <button type="submit"  className="btn btn-dark btn-lg btn-block" id="Sign-btn">Submit</button>
