@@ -28,7 +28,10 @@ const ProjectTables = () => {
         document.getElementsByClassName("text-muted")[0].innerHTML = ""
       } else {
 
-        var temp = result.data[0]._id.split("@");
+        var temp = []
+        result.data.map((item, index) => {
+          temp.push(item._id.split("@")[0])
+        })
         setName(temp);
       }
 
@@ -115,7 +118,8 @@ const ProjectTables = () => {
                         height="45"
                       />
                       <div className="ms-3">   
-                        <h6 className="mb-0">{name[0]}</h6>
+                      
+                        <h6 className="mb-0">{name[index]}</h6>
                         <span className="text-muted">{tdata._id}</span>
                       </div>
                     </div>
