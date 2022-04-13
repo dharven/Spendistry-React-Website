@@ -5,9 +5,10 @@ import "./PJ.css";
 import { Navigate , Link } from 'react-router-dom';
 
 const ProjectTables = () => {
-  const [data, setData] = useState([{MonthlyTotal:"", AllTotal:""}]);
+  const [data, setData] = useState([{MonthlyTotal:"", AllTotal:"", _id:""}]);
   const [index, setIndex] = useState(null);
   const [search, setSearch] = useState('');
+  const [name, setName] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,6 +23,14 @@ const ProjectTables = () => {
         
         process.env.REACT_APP_SPENDISTRY_API+'invoice/total/'+ email,
       );
+      
+      if(result.data[0]._id == "No data found"){
+        document.getElementsByClassName("text-muted")[0].innerHTML = ""
+      } else {
+
+        var temp = result.data[0]._id.split("@");
+        setName(temp);
+      }
 
       setData(result.data);
       console.log(result.data)
@@ -40,6 +49,8 @@ const ProjectTables = () => {
     }
      
   }
+
+
 
   if(index !== null){
     return <Navigate  to='/AllInvoices' />
@@ -104,9 +115,7 @@ const ProjectTables = () => {
                         height="45"
                       />
                       <div className="ms-3">   
-                        <h6 className="mb-0">{tdata._id}</h6>
-                       
-                        
+                        <h6 className="mb-0">{name[0]}</h6>
                         <span className="text-muted">{tdata._id}</span>
                       </div>
                     </div>
