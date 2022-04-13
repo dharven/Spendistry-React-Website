@@ -139,13 +139,16 @@ const Starter = () => {
    
     </Col>
     <Col md="6" lg="4">
+    
       <Card body className="text-center cardD">
+        
         <VictoryChart
         domainPadding={10}
         theme={VictoryTheme.material}
         height={190}
         >
           <VictoryStack>
+            
       <VictoryBar
             data={roundoff}
             x="quarter"

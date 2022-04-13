@@ -20,6 +20,10 @@ const LogIn = () => {
         
     },[])
 
+   
+        
+    
+
     
 
     const submit = (e) => {
@@ -102,7 +106,17 @@ const LogIn = () => {
             <div className="form-group">
                 <label for="password" >Password</label>
                 <input type="password" id="password" name="password" className="form-control" placeholder="Enter password" required/>
+                {/* <button onClick={this.onToggle} type="button">
+             {
+              this.state.togglePassword ? 
+              "": 
+              "bi bi-eye-fill"
+             }
+          </button> */}
+                <i class="bi bi-eye-fill" style={{cursor: "pointer", float: "right", marginTop: "-30px", marginRight: "10px"}}></i>
+                {/* <i class="bi bi-eye-slash-fill" style={{cursor: "pointer", float: "right", marginTop: "-30px", marginRight: "10px"}}></i> */}
             </div>
+            
                 <p id="password-error" style={{color: "red"}}></p>
             <div className="form-group">
                 <div className="custom-control custom-checkbox">

@@ -75,6 +75,9 @@ img{
     padding-bottom: 10px;
 }
 
+#reason{
+    max-width: 100%;
+}
 #tCard:hover{
     background-color: #ace5ef61;
     cursor: pointer;
