@@ -2,6 +2,7 @@ import React, { Component, Fragment, useState  } from "react";
 import axios from "axios";
 import "./login.index.css";
 import { Link , Navigate } from 'react-router-dom';
+import { Hidden } from "@material-ui/core";
 
 
 const LogIn = () => {
@@ -72,6 +73,25 @@ const LogIn = () => {
           })
     }
 
+
+    const seePwd = () => {
+        const pwd = document.getElementById("password");
+       const z = document.getElementById("eye-slash");
+        const y = document.getElementById("eye");
+        pwd.type = "text";
+        y.style.display = "block";
+        z.style.display = "none";
+    }
+
+    const hidePwd = () => {
+        const pwd = document.getElementById("password");
+        const z = document.getElementById("eye-slash");
+        const y = document.getElementById("eye");
+        pwd.type = "password";
+        y.style.display = "none";
+        z.style.display = "block";
+    }
+
     if(loggedIn){
         return(
             <Navigate to="/dashboard"/>
@@ -113,8 +133,8 @@ const LogIn = () => {
               "bi bi-eye-fill"
              }
           </button> */}
-                <i class="bi bi-eye-fill" style={{cursor: "pointer", float: "right", marginTop: "-30px", marginRight: "10px"}}></i>
-                {/* <i class="bi bi-eye-slash-fill" style={{cursor: "pointer", float: "right", marginTop: "-30px", marginRight: "10px"}}></i> */}
+                <i class="bi bi-eye-fill" id="eye" style={{cursor: "pointer", float: "right", marginTop: "-30px", marginRight: "10px"}} onClick={hidePwd} ></i>
+                <i class="bi bi-eye-slash-fill" id="eye-slash" style={{cursor: "pointer", float: "right", marginTop: "-30px", marginRight: "10px"}} onClick={seePwd} ></i>
             </div>
             
                 <p id="password-error" style={{color: "red"}}></p>
