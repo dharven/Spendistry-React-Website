@@ -10,7 +10,7 @@ import {
 import axios from 'axios';
 import "./dashboard.css"
 import QRCode from "react-qr-code";
-import { VictoryBar, VictoryChart, VictoryTheme, VictoryStack } from 'victory';
+import { VictoryBar, VictoryChart, VictoryTheme, VictoryStack, VictoryAxis } from 'victory';
 import SnackBar from '@material-ui/core/SnackBar';
 import IconButton from '@material-ui/core/IconButton';
 import { SnackbarContent } from "@material-ui/core";
@@ -140,8 +140,8 @@ const Starter = () => {
     </Col>
     <Col md="6" lg="4">
     
-      <Card body className="text-center cardD">
-        
+      <Card body className="text-center cardD" id="graph-card">
+
         <VictoryChart
         domainPadding={10}
         theme={VictoryTheme.material}
@@ -156,6 +156,7 @@ const Starter = () => {
           />
           </VictoryStack>
           </VictoryChart>
+          <p id="graph-text">Expenses of recent invoice</p>
       </Card>
     </Col>
     <Col md="6" lg="4">
@@ -216,20 +217,24 @@ const Starter = () => {
    
     </Col>
     <Col md="6" lg="4">
-      <Card body className="text-center cardD">
+      <Card body className="text-center cardD" id="graph-card">
         <VictoryChart
         domainPadding={10}
         theme={VictoryTheme.material}
         height={182}
         >
+
           <VictoryStack>
       <VictoryBar
             data={roundoff}
             x="quarter"
             y="earnings"
           />
+
           </VictoryStack>
           </VictoryChart>
+
+          <p id="graph-text">Expenses of recent invoice</p>
       </Card>
     </Col>
     <Col md="6" lg="4">

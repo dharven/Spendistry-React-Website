@@ -223,3 +223,22 @@ img{
 #all-exclaim-download{
     padding-left: 5%;
 }
+
+/* Handle on hover */
+    #graph-card:hover #graph-text {
+        display: block;
+    }
+
+#graph-text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: #0251d9b2;
+    color: white;
+    padding: 3.3px;
+    border-radius: 6px;
+    display: none;
+
+}
